@@ -6,16 +6,12 @@ import java.sql.*;
 
 public class DataConnection {
 
-    private static final String url = "jdbc:mysql://localhost:3306/saptBD?useTimezone=true&serverTimezone=UTC";
-    private static final String user = "root";
-    private static final String password = "root";
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
-
-    @Contract(pure = true)
-    public DataConnection(){ }
+    private static final String url = "jdbc:mysql://localhost:3306/stocakiBD?useTimezone=true&serverTimezone=UTC",
+                                user = "root",
+                                password = "root",
+                                driver = "com.mysql.cj.jdbc.Driver";
 
     public Connection getConnection(Connection con) {
-
         try{
             Class.forName(driver);
             con = DriverManager.getConnection(
@@ -27,7 +23,6 @@ public class DataConnection {
         }
     }
     public void closeConnection(PreparedStatement ps, ResultSet rs, Connection con) {
-
         try{
             ps.close();
             rs.close();
