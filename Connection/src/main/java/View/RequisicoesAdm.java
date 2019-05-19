@@ -31,7 +31,8 @@ public class RequisicoesAdm extends JFrame{
     private JLabel fcadLabel;
     private JPanel ftitlePanel;
     private JLabel ftitleLabel;
-    private JTable table1;
+    private JTable requisicoesTable;
+    private JScrollPane requisicoesScroll;
 
     RequisicoesAdm() {
         initComponents();

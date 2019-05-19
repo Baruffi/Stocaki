@@ -45,8 +45,14 @@ class Framework {
                 }
             };
 
-            imagePanel.setPreferredSize(size);
-            panel.setPreferredSize(size);
+            if (extendedState == JFrame.MAXIMIZED_BOTH || extendedState == JFrame.MAXIMIZED_HORIZ || extendedState == JFrame.MAXIMIZED_VERT) {
+                imagePanel.setPreferredSize(WINDOW_SIZE);
+                panel.setPreferredSize(WINDOW_SIZE);
+                frame.setExtendedState(extendedState);
+            } else {
+                imagePanel.setPreferredSize(size);
+                panel.setPreferredSize(size);
+            }
 
             frame.setContentPane(imagePanel);
             frame.add(panel);
@@ -61,9 +67,14 @@ class Framework {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Imagem de fundo inválida!");
 
-            panel.setPreferredSize(size);
+            if (extendedState == JFrame.MAXIMIZED_BOTH || extendedState == JFrame.MAXIMIZED_HORIZ || extendedState == JFrame.MAXIMIZED_VERT) {
+                panel.setPreferredSize(WINDOW_SIZE);
+                frame.setExtendedState(extendedState);
+            } else {
+                panel.setPreferredSize(size);
+            }
 
             frame.setContentPane(panel);
 
@@ -73,7 +84,6 @@ class Framework {
         frame.pack();
         frame.setLocationRelativeTo(callerFrame);
         frame.setResizable(RESIZEABLE);
-        frame.setExtendedState(extendedState);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }
