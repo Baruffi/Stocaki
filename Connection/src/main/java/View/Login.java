@@ -1,7 +1,8 @@
 package View;
 
+import Model.ViewModel;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,18 +25,22 @@ public class Login extends JFrame {
 
     Login() {
         initComponents();
+
         loginPanel.setPreferredSize(Framework.WINDOW_SIZE);
         setContentPane(loginPanel);
+
+        ViewModel.setCurrentFrame(this);
+        ViewModel.setCurrentPanel(loginPanel);
+
         pack();
         setLocationRelativeTo(null);
-        setExtendedState(getExtendedState() | Framework.EXTENDED_STATE);
         setResizable(Framework.RESIZEABLE);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new menuAdm(loginPanel.getSize(), getExtendedState());
+                new menuAdm();
                 dispose();
             }
         });

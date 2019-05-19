@@ -1,7 +1,6 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class menuAdm extends JFrame {
     private JPanel menuPanel;
@@ -26,12 +25,9 @@ public class menuAdm extends JFrame {
     private JPanel topmarginPanel;
     private JPanel bottommarginPanel;
 
-    menuAdm(Dimension windowSize, int extendedState) {
+    menuAdm() {
         initComponents();
-        Framework.SETUP(this, menuPanel);
-        setExtendedState(getExtendedState() | extendedState);
-        menuPanel.setPreferredSize(windowSize);
-        setVisible(true);
+        Framework.setup(this, menuPanel);
     }
 
     private void initComponents() {

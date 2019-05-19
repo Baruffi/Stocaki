@@ -1,5 +1,8 @@
 package View;
 
+import Model.ViewModel;
+import org.jetbrains.annotations.NotNull;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +13,16 @@ import java.io.File;
 import java.io.IOException;
 
 class Framework {
+
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);
-    static final int EXTENDED_STATE = Frame.NORMAL;
     static final boolean RESIZEABLE = true;
 
-    static void SETUP(final JFrame frame, final JPanel panel) {
+    static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
+        final JFrame callerFrame = ViewModel.getCurrentFrame();
+        final int extendedState = callerFrame.getExtendedState();
+        final JPanel callerPanel = ViewModel.getCurrentPanel();
+        final Dimension size = callerPanel.getSize();
+
         try {
             final BufferedImage image = ImageIO.read(new File("menuBackground.jpg"));
 
@@ -25,9 +33,15 @@ class Framework {
                     g.drawImage(image, 0, 0, null);
                 }
             };
-            panel.setPreferredSize(WINDOW_SIZE);
+
+            imagePanel.setPreferredSize(size);
+            panel.setPreferredSize(size);
+
             frame.setContentPane(imagePanel);
             frame.add(panel);
+
+            ViewModel.setCurrentFrame(frame);
+            ViewModel.setCurrentPanel(imagePanel);
 
             imagePanel.addComponentListener(new ComponentAdapter() {
                 @Override
@@ -37,13 +51,19 @@ class Framework {
             });
         } catch (IOException e) {
             e.printStackTrace();
-            panel.setPreferredSize(WINDOW_SIZE);
-            frame.setContentPane(panel);
-        }
 
+            panel.setPreferredSize(size);
+
+            frame.setContentPane(panel);
+
+            ViewModel.setCurrentFrame(frame);
+            ViewModel.setCurrentPanel(panel);
+        }
         frame.pack();
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(callerFrame);
         frame.setResizable(RESIZEABLE);
+        frame.setExtendedState(extendedState);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
