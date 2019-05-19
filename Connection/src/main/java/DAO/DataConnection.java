@@ -1,7 +1,5 @@
 package DAO;
 
-import org.jetbrains.annotations.Contract;
-
 import java.sql.*;
 
 public class DataConnection {
@@ -11,7 +9,8 @@ public class DataConnection {
                                 password = "root",
                                 driver = "com.mysql.cj.jdbc.Driver";
 
-    public Connection getConnection(Connection con) {
+    public Connection getConnection() {
+        Connection con = null;
         try{
             Class.forName(driver);
             con = DriverManager.getConnection(

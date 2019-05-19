@@ -55,4 +55,18 @@ public class RequisicoesAdm extends JFrame{
         Framework.addToMenu(fcadPanel,this, Framework.VIEW.FUNCIONARIO_ADM);
     }
 
+    private void createUIComponents() {
+        // Data to be displayed in the JTable
+        String[][] data = {
+                { "Kundan Kumar Jha", "4031", "CSE" },
+                { "Anand Jha", "6014", "IT" }
+        };
+
+        // Column Names
+        String[] columnNames = { "Name", "Roll Number", "Department" };
+
+        // Initializing the JTable
+        requisicoesTable = new JTable(data, columnNames);
+        requisicoesTable.setBounds(30, 40, 200, 300);
+    }
 }

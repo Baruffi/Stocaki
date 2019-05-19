@@ -79,16 +79,18 @@
             </properties>
             <border type="none"/>
             <children>
-              <scrollpane id="3b104" binding="requisicoesScroll">
+              <scrollpane id="8fac5" binding="requisicoesScroll">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="5431e" class="javax.swing.JTable" binding="requisicoesTable">
+                  <component id="f6ef7" class="javax.swing.JTable" binding="requisicoesTable" custom-create="true">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <autoCreateRowSorter value="false"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
