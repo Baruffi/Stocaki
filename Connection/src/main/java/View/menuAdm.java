@@ -7,8 +7,8 @@ public class menuAdm extends JFrame {
     private JPanel menuPanel;
     private JPanel titlePanel;
     private JLabel titleLabel;
-    private JPanel produtosTab;
-    private JPanel funcionariosTab;
+    private JPanel produtosPanel;
+    private JPanel funcionariosPanel;
     private JLabel pcadLabel;
     private JLabel mlistLabel;
     private JLabel rlistLabel;
@@ -19,6 +19,12 @@ public class menuAdm extends JFrame {
     private JLabel stocakiLabel;
     private JPanel bodyPanel;
     private JPanel sidePanel;
+    private JPanel ptitlePanel;
+    private JLabel ptitleLabel;
+    private JPanel ftitlePanel;
+    private JLabel ftitleLabel;
+    private JPanel topmarginPanel;
+    private JPanel bottommarginPanel;
 
     menuAdm(Dimension windowSize, int extendedState) {
         initComponents();
