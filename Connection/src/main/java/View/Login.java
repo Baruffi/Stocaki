@@ -18,28 +18,33 @@ public class Login extends JFrame {
     private JLabel passLabel;
     private JLabel imageLabel;
 
-    public Login(Dimension windowSize, int extendedState, boolean resizeable) {
-        initComponents(windowSize);
+    public static void main(String[] args) {
+        new Login();
+    }
+
+    Login() {
+        initComponents();
+        loginPanel.setPreferredSize(Framework.WINDOW_SIZE);
         setContentPane(loginPanel);
         pack();
         setLocationRelativeTo(null);
-        setExtendedState(getExtendedState() | extendedState);
-        setResizable(resizeable);
+        setExtendedState(getExtendedState() | Framework.EXTENDED_STATE);
+        setResizable(Framework.RESIZEABLE);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
+
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new menuAdm(loginPanel.getSize(), getExtendedState(), isResizable());
+                new menuAdm(loginPanel.getSize(), getExtendedState());
                 dispose();
             }
         });
     }
 
-    public void initComponents(Dimension windowSize) {
+    private void initComponents() {
         ImageIcon icon = new ImageIcon("loginImage.png");
         imageLabel.setIcon(icon);
         imageLabel.setText("");
-        loginPanel.setPreferredSize(windowSize);
     }
 
     {
