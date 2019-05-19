@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9c16a86b-afa7-4a79-8404-236e67c41eac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Framework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Framework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/MenuAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MenuAdm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MenuAdm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MenuAdm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java" afterDir="false" />
     </list>
@@ -30,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="304">
+              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -43,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="406">
-              <caret line="48" column="91" lean-forward="true" selection-start-line="48" selection-start-column="91" selection-end-line="48" selection-end-column="91" />
+              <caret line="49" column="91" lean-forward="true" selection-start-line="49" selection-start-column="91" selection-end-line="49" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -53,7 +52,7 @@
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form">
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
@@ -73,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+            <state relative-caret-position="425">
+              <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2887#2888#0" expanded="true" />
@@ -131,10 +130,11 @@
         <option value="$PROJECT_DIR$/src/main/java/View/menuAdm.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/menuAdm.form" />
         <option value="$PROJECT_DIR$/src/main/java/View/Login.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form" />
         <option value="$PROJECT_DIR$/src/main/java/View/Framework.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MenuAdm.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form" />
+        <option value="$PROJECT_DIR$/src/main/java/View/MenuAdm.form" />
       </list>
     </option>
   </component>
@@ -349,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558297678368</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Itens de navegação dos menus com navegação mais intuitiva">
+      <created>1558298187712</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1558298187712</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -365,15 +372,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37899786" visible="true" weight="0.26868907" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37579957" visible="true" weight="0.26868907" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.62100214" side_tool="true" visible="true" weight="0.26868907" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.6242004" side_tool="true" visible="true" weight="0.26868907" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.37793177" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.37473348" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -389,7 +396,8 @@
     <MESSAGE value="Framework updated" />
     <MESSAGE value="Menu Updated" />
     <MESSAGE value="Itens de navegação dos menus agora são iterativos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Itens de navegação dos menus agora são iterativos" />
+    <MESSAGE value="Itens de navegação dos menus com navegação mais intuitiva" />
+    <option name="LAST_COMMIT_MESSAGE" value="Itens de navegação dos menus com navegação mais intuitiva" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -457,21 +465,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.form">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="49" column="91" lean-forward="true" selection-start-line="49" selection-start-column="91" selection-end-line="49" selection-end-column="91" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+        <state relative-caret-position="425">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2887#2888#0" expanded="true" />
@@ -486,19 +490,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="48" column="91" lean-forward="true" selection-start-line="48" selection-start-column="91" selection-end-line="48" selection-end-column="91" />
+        <state relative-caret-position="304">
+          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.form">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
   </component>
 </project>
