@@ -16,13 +16,18 @@ import java.io.IOException;
 
 class Framework {
 
-    enum VIEW {FUNCIONARIOADM, FUNCIONARIOSADM, MOVIMENTACOESADM, PRODUTOADM, PRODUTOSADM, REQUISICOESADM}
+    enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM}
 
-    static final Color GREEN = new Color(72,180,80);
-    static final Color SOFTGREEN = new Color(116,206,119);
-    static final Color SELECTED = new Color(100,160,100);
+    static final Color GREEN = new Color(72,180,80),
+                       SOFTGREEN = new Color(116,206,119),
+                       SELECTED = new Color(100,160,100);
+
+    static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
+                        LOGIN_IMAGE = "imgs/loginImage.png",
+                        MENU_BACKGROUND = "imgs/menuBackground.jpg";
 
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);
+
     static final boolean RESIZEABLE = true;
 
     private static JFrame currentFrame;
@@ -35,7 +40,7 @@ class Framework {
         final Dimension size = callerPanel.getSize();
 
         try {
-            final BufferedImage image = ImageIO.read(new File("menuBackground.jpg"));
+            final BufferedImage image = ImageIO.read(new File(MENU_BACKGROUND));
 
             final JPanel imagePanel = new JPanel() {
                 @Override
@@ -108,7 +113,7 @@ class Framework {
 
     private static void navigate(JFrame self, @NotNull VIEW target) {
         switch (target) {
-            case REQUISICOESADM:
+            case REQUISICOES_ADM:
                 new RequisicoesAdm();
                 self.dispose();
                 break;

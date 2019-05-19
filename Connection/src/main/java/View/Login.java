@@ -46,7 +46,7 @@ public class Login extends JFrame {
     }
 
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("loginImage.png");
+        ImageIcon icon = new ImageIcon(Framework.LOGIN_IMAGE);
         imageLabel.setIcon(icon);
         imageLabel.setText("");
     }

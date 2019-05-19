@@ -41,15 +41,15 @@ public class MenuAdm extends JFrame {
         topbarPanel.setOpaque(false);
         bodyPanel.setOpaque(false);
 
-        ImageIcon icon = new ImageIcon("iconeCaixa.png");
+        ImageIcon icon = new ImageIcon(Framework.ICONE_CAIXA);
         stocakiLabel.setIcon(icon);
 
-        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOESADM);
-        Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOESADM);
-        Framework.addToMenu(plistPanel,this, Framework.VIEW.PRODUTOSADM);
-        Framework.addToMenu(pcadPanel,this, Framework.VIEW.PRODUTOADM);
-        Framework.addToMenu(flistPanel,this, Framework.VIEW.FUNCIONARIOSADM);
-        Framework.addToMenu(fcadPanel,this, Framework.VIEW.FUNCIONARIOADM);
+        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
+        Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM);
+        Framework.addToMenu(plistPanel,this, Framework.VIEW.PRODUTOS_ADM);
+        Framework.addToMenu(pcadPanel,this, Framework.VIEW.PRODUTO_ADM);
+        Framework.addToMenu(flistPanel,this, Framework.VIEW.FUNCIONARIOS_ADM);
+        Framework.addToMenu(fcadPanel,this, Framework.VIEW.FUNCIONARIO_ADM);
     }
 
 }
