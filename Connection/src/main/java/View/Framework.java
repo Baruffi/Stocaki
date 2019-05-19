@@ -8,11 +8,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 class Framework {
+
+    enum VIEW {FUNCIONARIOADM, FUNCIONARIOSADM, MOVIMENTACOESADM, PRODUTOADM, PRODUTOSADM, REQUISICOESADM, DISABLED}
 
     static final Color GREEN = new Color(72,180,80);
     static final Color SOFTGREEN = new Color(116,206,119);
@@ -72,6 +76,38 @@ class Framework {
         frame.setExtendedState(extendedState);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    static void addToMenu(@NotNull final JPanel panel, final JFrame self, final VIEW target) {
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                panel.setBackground(Framework.SELECTED);
+                panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panel.setBackground(Framework.SOFTGREEN);
+            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                navigate(self, target);
+            }
+        });
+    }
+
+    private static void navigate(JFrame self, @NotNull VIEW target) {
+        switch (target) {
+            case REQUISICOESADM:
+                new RequisicoesAdm();
+                self.dispose();
+                break;
+            case DISABLED:
+                break;
+            default:
+                System.out.println("Tela Inválida!");
+                break;
+        }
     }
 
     @Contract(pure = true)

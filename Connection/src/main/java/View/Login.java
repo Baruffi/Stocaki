@@ -39,7 +39,7 @@ public class Login extends JFrame {
         //transicao de tela
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new menuAdm();
+                new MenuAdm();
                 dispose();
             }
         });
