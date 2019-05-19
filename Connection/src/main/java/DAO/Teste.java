@@ -9,7 +9,7 @@ public class Teste {
     private static final DataConnection dataConnection = new DataConnection();
     private static final String select = "SELECT * FROM usuario";
 
-    public static void main(String[] args) {
+    public Teste() {
 
         Connection con = null;
         PreparedStatement ps = null;

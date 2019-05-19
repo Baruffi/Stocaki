@@ -3,17 +3,19 @@
   <grid id="27dc6" binding="menuPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="725" height="400"/>
+      <xy x="20" y="20" width="760" height="417"/>
     </constraints>
     <properties>
-      <background color="-12828863"/>
+      <background color="-1"/>
     </properties>
     <border type="none"/>
     <children>
       <grid id="887d5" binding="titlePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="143"/>
+          </grid>
         </constraints>
         <properties>
           <background color="-12012464"/>
@@ -22,10 +24,12 @@
         <children>
           <component id="3bd56" class="javax.swing.JLabel" binding="titleLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Bem Vindo, ADM1!"/>
+              <font size="48" style="0"/>
+              <foreground color="-1"/>
+              <text value="  Bem Vindo, ADM1!"/>
             </properties>
           </component>
         </children>
@@ -33,9 +37,14 @@
       <grid id="7c1ae" binding="topbarPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="88"/>
+          </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+          <enabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="70354" class="javax.swing.JLabel" binding="stocakiLabel">
@@ -43,7 +52,9 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="STOCAKI"/>
+              <font size="48" style="0"/>
+              <foreground color="-13882309"/>
+              <text value=" STOCAKI"/>
             </properties>
           </component>
         </children>
@@ -51,121 +62,171 @@
       <grid id="cca38" binding="bodyPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="450" height="400"/>
+          </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="249ae" binding="sidePanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="315" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-9122185"/>
+          <foreground color="-1"/>
+        </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="a2536" binding="tableScroll">
+          <grid id="c7919" binding="produtosTab" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-12828863"/>
+              <background color="-9122185"/>
+              <foreground color="-1"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="8fc9d" class="javax.swing.JTable" binding="table">
-                <constraints/>
-                <properties/>
+              <component id="45e84" class="javax.swing.JLabel" binding="mlistLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="- Listar Movimentações"/>
+                </properties>
+              </component>
+              <component id="63f8b" class="javax.swing.JLabel" binding="rlistLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="- Listar Requisições"/>
+                </properties>
+              </component>
+              <component id="eb82d" class="javax.swing.JLabel" binding="plistLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="- Listar Produtos"/>
+                </properties>
+              </component>
+              <component id="7d7d1" class="javax.swing.JLabel" binding="pcadLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="- Cadastrar Produtos"/>
+                </properties>
               </component>
             </children>
-          </scrollpane>
-        </children>
-      </grid>
-      <grid id="249ae" binding="sidePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <tabbedpane id="c1e7f" binding="menuTabs">
+          </grid>
+          <grid id="8a56a" binding="funcionariosTab" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="200" height="200"/>
-              </grid>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-9122185"/>
             </properties>
             <border type="none"/>
             <children>
-              <grid id="c7919" binding="produtosTab" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <component id="f3ffa" class="javax.swing.JLabel" binding="flistLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="   - Listar Funcionários"/>
+                </properties>
+              </component>
+              <component id="6fc85" class="javax.swing.JLabel" binding="fcadLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="0"/>
+                  <foreground color="-1"/>
+                  <text value="   - Cadastrar Funcionários   "/>
+                </properties>
+              </component>
+              <grid id="6ccb2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <tabbedpane title="Produtos"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="250"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <background color="-9122185"/>
                 </properties>
                 <border type="none"/>
-                <children>
-                  <component id="45e84" class="javax.swing.JLabel" binding="mlistLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Listar Movimentações"/>
-                    </properties>
-                  </component>
-                  <component id="63f8b" class="javax.swing.JLabel" binding="rlistLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Listar Requisições"/>
-                    </properties>
-                  </component>
-                  <component id="eb82d" class="javax.swing.JLabel" binding="plistLabel">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Listar Produtos"/>
-                    </properties>
-                  </component>
-                  <component id="7d7d1" class="javax.swing.JLabel" binding="pcadLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Cadastrar Produtos"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="8a56a" binding="funcionariosTab" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <tabbedpane title="Funcionários"/>
-                </constraints>
-                <properties>
-                  <background color="-9122185"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="f3ffa" class="javax.swing.JLabel" binding="flistLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Listar Funcionários"/>
-                    </properties>
-                  </component>
-                  <component id="6fc85" class="javax.swing.JLabel" binding="fcadLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Cadastrar Funcionários"/>
-                    </properties>
-                  </component>
-                </children>
+                <children/>
               </grid>
             </children>
-          </tabbedpane>
+          </grid>
+          <grid id="5e080" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-9122185"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="2edd9" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="   # PRODUTOS"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="9910e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-9122185"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="b295d" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font size="24" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="   # FUNCIONÁRIOS"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
     </children>
