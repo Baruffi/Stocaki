@@ -16,7 +16,7 @@ import java.io.IOException;
 
 class Framework {
 
-    enum VIEW {FUNCIONARIOADM, FUNCIONARIOSADM, MOVIMENTACOESADM, PRODUTOADM, PRODUTOSADM, REQUISICOESADM, DISABLED}
+    enum VIEW {FUNCIONARIOADM, FUNCIONARIOSADM, MOVIMENTACOESADM, PRODUTOADM, PRODUTOSADM, REQUISICOESADM}
 
     static final Color GREEN = new Color(72,180,80);
     static final Color SOFTGREEN = new Color(116,206,119);
@@ -101,8 +101,6 @@ class Framework {
             case REQUISICOESADM:
                 new RequisicoesAdm();
                 self.dispose();
-                break;
-            case DISABLED:
                 break;
             default:
                 System.out.println("Tela Inválida!");

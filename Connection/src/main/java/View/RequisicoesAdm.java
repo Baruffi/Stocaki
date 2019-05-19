@@ -45,12 +45,12 @@ public class RequisicoesAdm extends JFrame{
         ImageIcon icon = new ImageIcon("iconeCaixa.png");
         stocakiLabel.setIcon(icon);
 
-        Framework.addToMenu(mlistPanel,this, Framework.VIEW.DISABLED);
-        Framework.addToMenu(rlistPanel,this, Framework.VIEW.DISABLED);
-        Framework.addToMenu(plistPanel,this, Framework.VIEW.DISABLED);
-        Framework.addToMenu(pcadPanel,this, Framework.VIEW.DISABLED);
-        Framework.addToMenu(flistPanel,this, Framework.VIEW.DISABLED);
-        Framework.addToMenu(fcadPanel,this, Framework.VIEW.DISABLED);
+        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOESADM);
+        // Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOESADM); DISABLED!!!
+        Framework.addToMenu(plistPanel,this, Framework.VIEW.PRODUTOSADM);
+        Framework.addToMenu(pcadPanel,this, Framework.VIEW.PRODUTOADM);
+        Framework.addToMenu(flistPanel,this, Framework.VIEW.FUNCIONARIOSADM);
+        Framework.addToMenu(fcadPanel,this, Framework.VIEW.FUNCIONARIOADM);
     }
 
 }
