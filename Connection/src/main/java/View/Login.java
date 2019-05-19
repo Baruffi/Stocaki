@@ -1,7 +1,5 @@
 package View;
 
-import Model.ViewModel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,8 +27,8 @@ public class Login extends JFrame {
         loginPanel.setPreferredSize(Framework.WINDOW_SIZE);
         setContentPane(loginPanel);
 
-        ViewModel.setCurrentFrame(this);
-        ViewModel.setCurrentPanel(loginPanel);
+        Framework.setCurrentFrame(this);
+        Framework.setCurrentPanel(loginPanel);
 
         pack();
         setLocationRelativeTo(null);
@@ -38,6 +36,7 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
+        //transicao de tela
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new menuAdm();

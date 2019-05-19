@@ -1,6 +1,6 @@
 package View;
 
-import Model.ViewModel;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -14,13 +14,20 @@ import java.io.IOException;
 
 class Framework {
 
+    static final Color GREEN = new Color(72,180,80);
+    static final Color SOFTGREEN = new Color(116,206,119);
+    static final Color SELECTED = new Color(100,160,100);
+
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);
     static final boolean RESIZEABLE = true;
 
+    private static JFrame currentFrame;
+    private static JPanel currentPanel;
+
     static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
-        final JFrame callerFrame = ViewModel.getCurrentFrame();
+        final JFrame callerFrame = getCurrentFrame();
         final int extendedState = callerFrame.getExtendedState();
-        final JPanel callerPanel = ViewModel.getCurrentPanel();
+        final JPanel callerPanel = getCurrentPanel();
         final Dimension size = callerPanel.getSize();
 
         try {
@@ -40,8 +47,8 @@ class Framework {
             frame.setContentPane(imagePanel);
             frame.add(panel);
 
-            ViewModel.setCurrentFrame(frame);
-            ViewModel.setCurrentPanel(imagePanel);
+            setCurrentFrame(frame);
+            setCurrentPanel(imagePanel);
 
             imagePanel.addComponentListener(new ComponentAdapter() {
                 @Override
@@ -56,8 +63,8 @@ class Framework {
 
             frame.setContentPane(panel);
 
-            ViewModel.setCurrentFrame(frame);
-            ViewModel.setCurrentPanel(panel);
+            setCurrentFrame(frame);
+            setCurrentPanel(panel);
         }
         frame.pack();
         frame.setLocationRelativeTo(callerFrame);
@@ -65,5 +72,23 @@ class Framework {
         frame.setExtendedState(extendedState);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    @Contract(pure = true)
+    static JPanel getCurrentPanel() {
+        return currentPanel;
+    }
+
+    static void setCurrentPanel(JPanel currentPanel) {
+        Framework.currentPanel = currentPanel;
+    }
+
+    @Contract(pure = true)
+    static JFrame getCurrentFrame() {
+        return currentFrame;
+    }
+
+    static void setCurrentFrame(JFrame currentFrame) {
+        Framework.currentFrame = currentFrame;
     }
 }
