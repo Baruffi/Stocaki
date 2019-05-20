@@ -20,6 +20,7 @@ public class RequisicaoDAO {
             con = dataConnection.getConnection();
             ps = con.prepareStatement(SELECT);
             rs = ps.executeQuery();
+
             while (rs.next()) {
                 row = rs.getRow();
                 requisicaoMap.put(row, rs.getString("id_requisicao"));
