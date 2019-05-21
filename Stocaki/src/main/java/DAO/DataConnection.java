@@ -21,11 +21,41 @@ class DataConnection {
             return con;
         }
     }
-    void closeConnection(PreparedStatement ps, ResultSet rs, Connection con) {
+
+    void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
         try{
-            ps.close();
-            rs.close();
-            con.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void closeConnection(Connection con, PreparedStatement ps) {
+        try{
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void closeConnection(Connection con) {
+        try{
+            if (con != null) {
+                con.close();
+            }
         } catch(Exception e) {
             e.printStackTrace();
         }

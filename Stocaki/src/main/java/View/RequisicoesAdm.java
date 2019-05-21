@@ -1,6 +1,8 @@
 package View;
 
 import javax.swing.*;
+import java.util.HashMap;
+import DAO.RequisicaoDAO;
 
 public class RequisicoesAdm extends JFrame{
     private JPanel rootPanel;
@@ -56,7 +58,15 @@ public class RequisicoesAdm extends JFrame{
     }
 
     private void createUIComponents() {
-        // Data to be displayed in the JTable
+        /*
+        TODO
+                Data to be displayed in the JTable
+
+                HashMap<Integer, String> dataMap = RequisicaoDAO.displayRequisicoes();
+
+                String[] line = {dataMap.get(1)};
+        */
+
         String[][] data = {
                 { "Kundan Kumar Jha", "4031", "CSE" },
                 { "Anand Jha", "6014", "IT" }
