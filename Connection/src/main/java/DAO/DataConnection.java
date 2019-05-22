@@ -11,7 +11,9 @@ public class DataConnection {
                                 password = "root",
                                 driver = "com.mysql.cj.jdbc.Driver";
 
-    public Connection getConnection(Connection con) {
+
+
+    public static Connection getConnection(Connection con) {
         try{
             Class.forName(driver);
             con = DriverManager.getConnection(
