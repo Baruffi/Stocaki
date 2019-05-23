@@ -114,8 +114,8 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","20","V","X"});
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","20","V","X"});
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","6","V","X"});
+        dm.addRow(new Object[]{"teste2","teste","teste teste","testeC","testeL","Preta","7","V","X"});
 
         for (Requisicao requisicao:
                 requisicoes) {
