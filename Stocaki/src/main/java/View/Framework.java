@@ -5,11 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +16,16 @@ class Framework {
 
     enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM}
 
+    static final Font TABLE_HEADER = new Font("Segoe UI", Font.BOLD , 24),
+                      TABLE_BODY = new Font("Segoe UI", Font.PLAIN, 24);
+
     static final Color GREEN = new Color(72,180,80),
                        SOFTGREEN = new Color(116,206,119),
                        SELECTED = new Color(100,160,100);
 
     static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
                         LOGIN_IMAGE = "imgs/loginImage.png",
+                        SEARCH_IMAGE = "imgs/iconeBusca2.png",
                         MENU_BACKGROUND = "imgs/menuBackground.jpg";
 
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);
@@ -139,5 +141,82 @@ class Framework {
 
     static void setCurrentFrame(JFrame currentFrame) {
         Framework.currentFrame = currentFrame;
+    }
+}
+
+//Buttons for tables
+
+class ButtonRenderer extends JButton implements TableCellRenderer {
+
+    ButtonRenderer() {
+        setOpaque(true);
+    }
+
+    public Component getTableCellRendererComponent(JTable table, Object value,
+                                                   boolean isSelected, boolean hasFocus, int row, int column) {
+        if (isSelected) {
+            setForeground(table.getSelectionForeground());
+            setBackground(table.getSelectionBackground());
+        } else {
+            setForeground(table.getForeground());
+            setBackground(UIManager.getColor("Button.background"));
+        }
+        setText((value == null) ? "" : value.toString());
+        return this;
+    }
+}
+
+class ButtonEditor extends DefaultCellEditor {
+    private JButton button;
+
+    private String label;
+
+    private boolean isPushed;
+
+    ButtonEditor(JCheckBox checkBox) {
+        super(checkBox);
+        button = new JButton();
+        button.setOpaque(true);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                fireEditingStopped();
+            }
+        });
+    }
+
+    public Component getTableCellEditorComponent(JTable table, Object value,
+                                                 boolean isSelected, int row, int column) {
+        if (isSelected) {
+            button.setForeground(table.getSelectionForeground());
+            button.setBackground(table.getSelectionBackground());
+        } else {
+            button.setForeground(table.getForeground());
+            button.setBackground(table.getBackground());
+        }
+        label = (value == null) ? "" : value.toString();
+        button.setText(label);
+        isPushed = true;
+        return button;
+    }
+
+    public Object getCellEditorValue() {
+        if (isPushed) {
+            /*
+            TODO
+                Replace with aprove action in RequisicaoDAO
+            */
+            JOptionPane.showMessageDialog(button, label + ": Ouch!");
+        }
+        isPushed = false;
+        return label;
+    }
+
+    public boolean stopCellEditing() {
+        isPushed = false;
+        return super.stopCellEditing();
+    }
+
+    protected void fireEditingStopped() {
+        super.fireEditingStopped();
     }
 }

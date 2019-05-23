@@ -11,7 +11,7 @@ public class RequisicaoDAO {
     private static final String SELECT = "SELECT * FROM REQUISICAO";
     private static final String SELECT_FUNCIONARIO = "SELECT NOME FROM FUNCIONARIO, REQUISICAO WHERE FUNCIONARIO.ID_FUNCIONARIO = REQUISICAO.ID_FUNCIONARIO";
 
-    public static List<Requisicao> displayRequisicoes() {
+    public static List<Requisicao> readRequisicoes() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -32,15 +32,10 @@ public class RequisicaoDAO {
                 requisicao.setClassificacao(rs.getString("CLASSIFICACAO"));
                 requisicao.setLote(rs.getString("LOTE"));
                 requisicao.setCor(rs.getString("COR"));
+                requisicao.setId_funcionario(rs.getInt("ID_FUNCIONARIO"));
                 requisicao.setSaldo(rs.getInt("SALDO"));
                 requisicoes.add(requisicao);
             }
-//            ps = con.prepareStatement(SELECT_FUNCIONARIO);
-//            rs = ps.executeQuery();
-//
-//            while(rs.next()) {
-//                requisicao.setFuncionario(rs.getString("NOME"));
-//            }
         } catch(Exception e) {
             e.printStackTrace();
         } finally {

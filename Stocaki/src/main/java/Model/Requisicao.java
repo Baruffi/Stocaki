@@ -9,7 +9,7 @@ public class Requisicao {
     private String classificacao;
     private String lote;
     private String cor;
-    private String funcionario;
+    private int id_funcionario;
     private int saldo;
 
     public Requisicao() {
@@ -80,12 +80,12 @@ public class Requisicao {
         this.cor = cor;
     }
 
-    public String getFuncionario() {
-        return funcionario;
+    public int getId_funcionario() {
+        return id_funcionario;
     }
 
-    public void setFuncionario(String funcionario) {
-        this.funcionario = funcionario;
+    public void setId_funcionario(int id_funcionario) {
+        this.id_funcionario = id_funcionario;
     }
 
     public int getSaldo() {

@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="760" height="754"/>
+      <xy x="20" y="20" width="1152" height="754"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -18,8 +18,8 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="baf98" binding="titlePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="20" bottom="0" right="0"/>
+          <grid id="baf98" binding="titlePanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="20" bottom="0" right="20"/>
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="143"/>
@@ -40,6 +40,39 @@
                   <text value="Bem Vindo, ADM1!"/>
                 </properties>
               </component>
+              <grid id="6dc26" binding="searchPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="20" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-12012464"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="c1307" class="javax.swing.JTextField" binding="searchBar">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="300" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <font size="36"/>
+                      <foreground color="-6118750"/>
+                    </properties>
+                  </component>
+                  <component id="1742a" class="javax.swing.JLabel" binding="searchLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <labelFor value="c1307"/>
+                      <text value="Label"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
           <grid id="adb0a" binding="topbarPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -83,13 +116,20 @@
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <autoscrolls value="true"/>
+                  <font size="24"/>
+                </properties>
                 <border type="none"/>
                 <children>
-                  <component id="f6ef7" class="javax.swing.JTable" binding="requisicoesTable" custom-create="true">
+                  <component id="4b2b7" class="javax.swing.JTable" binding="requisicoesTable">
                     <constraints/>
                     <properties>
-                      <autoCreateRowSorter value="false"/>
+                      <font size="24"/>
+                      <intercellSpacing width="1" height="1"/>
+                      <rowHeight value="32"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
                     </properties>
                   </component>
                 </children>

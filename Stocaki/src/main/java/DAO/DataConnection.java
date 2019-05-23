@@ -17,9 +17,8 @@ class DataConnection {
                     url, user, password);
         } catch(Exception e) {
             e.printStackTrace();
-        } finally {
-            return con;
         }
+        return con;
     }
 
     void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
