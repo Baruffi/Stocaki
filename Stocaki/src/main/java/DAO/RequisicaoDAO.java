@@ -1,47 +1,51 @@
 package DAO;
 
+import Model.Requisicao;
+
 import java.sql.*;
 import java.util.*;
 
 public class RequisicaoDAO {
 
     private static final DataConnection dataConnection = new DataConnection();
-    private static final String SELECT = "SELECT * FROM Requisicao";
+    private static final String SELECT = "SELECT * FROM REQUISICAO";
+    private static final String SELECT_FUNCIONARIO = "SELECT NOME FROM FUNCIONARIO, REQUISICAO WHERE FUNCIONARIO.ID_FUNCIONARIO = REQUISICAO.ID_FUNCIONARIO";
 
-    public static void displayRequisicoes() {
-        /*
-        TODO
-            display data from table Requisicao
-
-        HashMap<Integer,String> requisicaoMap = new HashMap<Integer, String>();
-        requisicaoMap.put(row, rs.getString("id_requisicao"));
-        requisicaoMap.put(row, rs.getString("status_aprovacao"));
-        requisicaoMap.put(row, rs.getString("descricao"));
-        requisicaoMap.put(row, rs.getString("classificacao"));
-        requisicaoMap.put(row, rs.getString("modelo"));
-        requisicaoMap.put(row, rs.getString("lote"));
-        requisicaoMap.put(row, rs.getString("cor"));
-        requisicaoMap.put(row, rs.getString("sessao"));
-        requisicaoMap.put(row, rs.getString("saldo"));
-        */
+    public static List<Requisicao> displayRequisicoes() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        List<Requisicao> requisicoes = new ArrayList<Requisicao>();
+        Requisicao requisicao = new Requisicao();
 
         try {
-            int row;
             con = dataConnection.getConnection();
             ps = con.prepareStatement(SELECT);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                row = rs.getRow();
+                requisicao.setId_requisicao(rs.getInt("ID_REQUISICAO"));
+                requisicao.setStatus_aprovacao(rs.getString("STATUS_APROVACAO"));
+                requisicao.setNome(rs.getString("NOME"));
+                requisicao.setModelo(rs.getString("MODELO"));
+                requisicao.setDescricao(rs.getString("DESCRICAO"));
+                requisicao.setClassificacao(rs.getString("CLASSIFICACAO"));
+                requisicao.setLote(rs.getString("LOTE"));
+                requisicao.setCor(rs.getString("COR"));
+                requisicao.setSaldo(rs.getInt("SALDO"));
+                requisicoes.add(requisicao);
             }
+//            ps = con.prepareStatement(SELECT_FUNCIONARIO);
+//            rs = ps.executeQuery();
+//
+//            while(rs.next()) {
+//                requisicao.setFuncionario(rs.getString("NOME"));
+//            }
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
             dataConnection.closeConnection(con, ps, rs);
-            // return data
         }
+        return requisicoes;
     }
 }
