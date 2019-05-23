@@ -102,7 +102,7 @@ public class RequisicoesAdm extends JFrame{
 
         requisicoes = RequisicaoDAO.readRequisicoes();
 
-        String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Aprovar"};
+        String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Aprovar", "Negar"};
 
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
@@ -114,6 +114,9 @@ public class RequisicoesAdm extends JFrame{
 
         requisicoesTable.getColumn("Aprovar").setCellRenderer(new ButtonRenderer());
         requisicoesTable.getColumn("Aprovar").setCellEditor(new ButtonEditor(new JCheckBox()));
+
+        requisicoesTable.getColumn("Negar").setCellRenderer(new ButtonRenderer());
+        requisicoesTable.getColumn("Negar").setCellEditor(new ButtonEditor(new JCheckBox()));
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
         // Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM); DISABLED!!!
