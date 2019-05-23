@@ -1,11 +1,14 @@
 package View;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TableView;
 import java.awt.*;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,38 +50,42 @@ public class RequisicoesAdm extends JFrame{
     private JLabel searchLabel;
     private JPanel searchPanel;
 
-    private List<Object[]> removedRows = new ArrayList<Object[]>();
     private DefaultTableModel dm = new DefaultTableModel(0, 0);
+    private List<Object[]> removedRows = new ArrayList<Object[]>();
 
     RequisicoesAdm() {
         initComponents();
         Framework.setup(this, menuPanel);
-        searchBar.addInputMethodListener(new InputMethodListener() {
-            public void inputMethodTextChanged(InputMethodEvent event) {
-                String search = searchBar.getText().trim();
-                for (int i = 1; i < requisicoesTable.getRowCount(); i++) {
-                    if (!(search.contains(requisicoesTable.getValueAt(i,1).toString()) || requisicoesTable.getValueAt(i,1).toString().contains(search))) {
-                        List<Object> removedRow = new ArrayList<Object>();
-                        for (int j = 1; j < requisicoesTable.getColumnCount(); j++) {
-                            removedRow.add(requisicoesTable.getValueAt(i,1));
+        searchBar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                for (int i = dm.getRowCount()-1; i >= 0; i--) {
+                    List<Object> removedRow = new ArrayList<Object>();
+                    boolean remove = true;
+                    for (int j = 0; j < dm.getColumnCount(); j++) {
+                        if (requisicoesTable.getValueAt(i,j).toString().contains(searchBar.getText())) {
+                            remove = false;
+                            break;
                         }
+                        removedRow.add(requisicoesTable.getValueAt(i,j));
+                    }
+                    if (remove) {
                         removedRows.add(removedRow.toArray());
-                        requisicoesTable.remove(i);
+                        dm.removeRow(i);
                     }
                 }
-                for (Object[] removedRow :
-                     removedRows) {
+                for (int i = removedRows.size()-1; i >= 0; i--) {
+                    Object[] removedRow = removedRows.get(i);
                     for (Object removedCell:
-                         removedRow) {
-                        if (removedCell.toString().contains(search) || search.contains(removedCell.toString())) {
+                            removedRow) {
+                        if (removedCell.toString().contains(searchBar.getText())) {
                             dm.addRow(removedRow);
+                            removedRows.remove(removedRow);
                             break;
                         }
                     }
                 }
-            }
-            public void caretPositionChanged(InputMethodEvent event) {
-
             }
         });
     }
@@ -107,9 +114,12 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","20","V","X"});
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","20","V","X"});
+
         for (Requisicao requisicao:
-             requisicoes) {
-            dm.addRow(new Object[]{requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor()});
+                requisicoes) {
+            dm.addRow(new Object[]{requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(),"V","X"});
         }
 
         requisicoesTable.getColumn("Aprovar").setCellRenderer(new ButtonRenderer());
