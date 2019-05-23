@@ -203,7 +203,7 @@ class ButtonEditor extends DefaultCellEditor {
         if (isPushed) {
             /*
             TODO
-                Replace with aprove action in RequisicaoDAO
+                Replace with optional actions based on the label icon?
             */
             JOptionPane.showMessageDialog(button, label + ": Ouch!");
         }
