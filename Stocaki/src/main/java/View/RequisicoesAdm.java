@@ -1,19 +1,14 @@
 package View;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.TableView;
-import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import DAO.RequisicaoDAO;
 import Model.Requisicao;
+import org.jetbrains.annotations.Contract;
 
 public class RequisicoesAdm extends JFrame{
     private JPanel rootPanel;
@@ -50,8 +45,27 @@ public class RequisicoesAdm extends JFrame{
     private JLabel searchLabel;
     private JPanel searchPanel;
 
-    private DefaultTableModel dm = new DefaultTableModel(0, 0);
+    private DefaultTableModel dm = new DefaultTableModel(0,0) {
+        @Contract(pure = true)
+        @Override
+        public Class getColumnClass(int column) {
+            return getValueAt(0, column).getClass();
+        }
+        @Contract(pure = true)
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+
     private List<Object[]> removedRows = new ArrayList<Object[]>();
+
+    private ImageIcon stocaki_icon = new ImageIcon(Framework.ICONE_CAIXA);
+    private ImageIcon approve_icon = new ImageIcon(Framework.ICONE_APROVAR);
+    private ImageIcon reject_icon = new ImageIcon(Framework.ICONE_DELETAR);
+    private ImageIcon approve_green = new ImageIcon(Framework.ICONE_APROVAR_VERDE);
+    private ImageIcon reject_red = new ImageIcon(Framework.ICONE_DELETAR_VERMELHO);
+    private ImageIcon search_icon = new ImageIcon(Framework.ICONE_BUSCA);
 
     RequisicoesAdm() {
         initComponents();
@@ -88,6 +102,37 @@ public class RequisicoesAdm extends JFrame{
                 }
             }
         });
+        requisicoesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int answer;
+                switch (requisicoesTable.columnAtPoint(e.getPoint())) {
+                    case 7:
+                        dm.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), 7);
+                        answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            //TODO
+                        } else {
+                            dm.setValueAt(approve_icon, requisicoesTable.rowAtPoint(e.getPoint()), 7);
+                        }
+
+                        break;
+                    case 8:
+                        dm.setValueAt(reject_red, requisicoesTable.rowAtPoint(e.getPoint()), 8);
+                        answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja NEGAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            //TODO
+                        } else {
+                            dm.setValueAt(reject_icon, requisicoesTable.rowAtPoint(e.getPoint()), 8);
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     private void initComponents() {
@@ -97,10 +142,8 @@ public class RequisicoesAdm extends JFrame{
         topbarPanel.setOpaque(false);
         bodyPanel.setOpaque(false);
 
-        ImageIcon icon = new ImageIcon(Framework.ICONE_CAIXA);
-        stocakiLabel.setIcon(icon);
+        stocakiLabel.setIcon(stocaki_icon);
 
-        ImageIcon search_icon = new ImageIcon(Framework.SEARCH_IMAGE);
         searchLabel.setIcon(search_icon);
         searchLabel.setText("");
 
@@ -114,19 +157,13 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","6","V","X"});
-        dm.addRow(new Object[]{"teste2","teste","teste teste","testeC","testeL","Preta","7","V","X"});
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","6",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste2","teste","teste teste","testeC","testeL","Preta","7",approve_icon,reject_icon});
 
         for (Requisicao requisicao:
                 requisicoes) {
             dm.addRow(new Object[]{requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(),"V","X"});
         }
-
-        requisicoesTable.getColumn("Aprovar").setCellRenderer(new ButtonRenderer());
-        requisicoesTable.getColumn("Aprovar").setCellEditor(new ButtonEditor(new JCheckBox()));
-
-        requisicoesTable.getColumn("Negar").setCellRenderer(new ButtonRenderer());
-        requisicoesTable.getColumn("Negar").setCellEditor(new ButtonEditor(new JCheckBox()));
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
         // Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM); DISABLED!!!

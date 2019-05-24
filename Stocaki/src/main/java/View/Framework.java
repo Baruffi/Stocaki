@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -24,9 +23,13 @@ class Framework {
                        SELECTED = new Color(100,160,100);
 
     static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
-                        LOGIN_IMAGE = "imgs/loginImage.png",
-                        SEARCH_IMAGE = "imgs/iconeBusca2.png",
-                        MENU_BACKGROUND = "imgs/menuBackground.jpg";
+                        IMAGEM_LOGIN = "imgs/loginImage.png",
+                        ICONE_BUSCA = "imgs/iconeBusca2.png",
+                        ICONE_APROVAR = "imgs/icons8-checkmark-26.png",
+                        ICONE_APROVAR_VERDE = "imgs/green-checkmark.png",
+                        ICONE_DELETAR = "imgs/icons8-delete-26.png",
+                        ICONE_DELETAR_VERMELHO = "imgs/red-delete.png",
+                        PLANO_DE_FUNDO = "imgs/menuBackground.jpg";
 
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);
 
@@ -42,7 +45,7 @@ class Framework {
         final Dimension size = callerPanel.getSize();
 
         try {
-            final BufferedImage image = ImageIO.read(new File(MENU_BACKGROUND));
+            final BufferedImage image = ImageIO.read(new File(PLANO_DE_FUNDO));
 
             final JPanel imagePanel = new JPanel() {
                 @Override
@@ -141,86 +144,5 @@ class Framework {
 
     static void setCurrentFrame(JFrame currentFrame) {
         Framework.currentFrame = currentFrame;
-    }
-}
-
-//Buttons for tables
-
-class ButtonRenderer extends JButton implements TableCellRenderer {
-
-    ButtonRenderer() {
-        setOpaque(true);
-    }
-
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                                                   boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isSelected) {
-            setForeground(table.getSelectionForeground());
-            setBackground(table.getSelectionBackground());
-        } else {
-            setForeground(table.getForeground());
-            setBackground(UIManager.getColor("Button.background"));
-        }
-        setText((value == null) ? "" : value.toString());
-        return this;
-    }
-}
-
-class ButtonEditor extends DefaultCellEditor {
-    private JButton button;
-
-    private String label;
-
-    private boolean isPushed;
-
-    ButtonEditor(JCheckBox checkBox) {
-        super(checkBox);
-        button = new JButton();
-        button.setOpaque(true);
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                fireEditingStopped();
-            }
-        });
-    }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value,
-                                                 boolean isSelected, int row, int column) {
-        if (isSelected) {
-            button.setForeground(table.getSelectionForeground());
-            button.setBackground(table.getSelectionBackground());
-        } else {
-            button.setForeground(table.getForeground());
-            button.setBackground(table.getBackground());
-        }
-        label = (value == null) ? "" : value.toString();
-        button.setText(label);
-        isPushed = true;
-        return button;
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        if (isPushed) {
-            /*
-            TODO
-                Replace with optional actions based on the label icon?
-            */
-            JOptionPane.showMessageDialog(button, label + ": Ouch!");
-        }
-        isPushed = false;
-        return label;
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        isPushed = false;
-        return super.stopCellEditing();
-    }
-
-    @Override
-    protected void fireEditingStopped() {
-        super.fireEditingStopped();
     }
 }
