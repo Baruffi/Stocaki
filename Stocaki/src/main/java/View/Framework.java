@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 class Framework {
 
@@ -20,7 +21,8 @@ class Framework {
 
     static final Color GREEN = new Color(72,180,80),
                        SOFTGREEN = new Color(116,206,119),
-                       SELECTED = new Color(100,160,100);
+                       SELECTED = new Color(100,160,100),
+                       SOFTGRAY = new Color(162,162,162);
 
     static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
                         IMAGEM_LOGIN = "imgs/loginImage.png",
@@ -132,6 +134,101 @@ class Framework {
         }
     }
 
+    static void addToForm(@NotNull final JTextField textField, final JSeparator separator, final JLabel label) {
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                if (!Character.isLetter(e.getKeyChar()) && !Character.isDigit(e.getKeyChar()) && e.getKeyChar() != ' ') {
+                    e.consume();
+                }
+            }
+        });
+        textField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                if (!textField.hasFocus()) {
+                    if (separator.getBackground() != Color.RED && separator.getBackground() != Color.ORANGE) {
+                        separator.setForeground(GREEN);
+                        separator.setBackground(GREEN);
+                    }
+                    label.setForeground(label.getForeground().darker());
+                }
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                if (!textField.hasFocus()) {
+                    if (separator.getBackground() != Color.RED && separator.getBackground() != Color.ORANGE) {
+                        separator.setForeground(SOFTGREEN);
+                        separator.setBackground(Color.WHITE);
+                    }
+                    label.setForeground(SOFTGRAY);
+                }
+            }
+        });
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                separator.setForeground(GREEN);
+                separator.setBackground(GREEN);
+                label.setForeground(label.getForeground().darker());
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                separator.setForeground(SOFTGREEN);
+                separator.setBackground(Color.WHITE);
+                label.setForeground(SOFTGRAY);
+            }
+        });
+    }
+
+    static void addToForm(@NotNull final JButton button, final JTextField[] textFields, final JSeparator[] separators) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int error = 0;
+                super.mouseClicked(e);
+                for (int i = 0; i < textFields.length; i++) {
+                    if (textFields[i].getText().trim().equals("")) {
+                        separators[i].setForeground(Color.RED);
+                        separators[i].setBackground(Color.RED);
+                        if (error == 2 || error == 3) {
+                            error = 3;
+                        } else {
+                            error = 1;
+                        }
+                    } else if (textFields[i].getText().toUpperCase().trim().matches(".*CREATE.*|.*DROP.*|.*USE.*|.*SELECT.*|.*INSERT.*|.*UPDATE.*|.*DELETE.*|.*FROM.*|.*INTO.*|.*VALUES.*|.*WHERE.*")) {
+                        separators[i].setForeground(Color.ORANGE);
+                        separators[i].setBackground(Color.ORANGE);
+                        if (error == 1 || error == 3) {
+                            error = 3;
+                        } else {
+                            error = 2;
+                        }
+                    }
+                }
+                switch (error) {
+                    case 3:
+                        JOptionPane.showMessageDialog(button, "Campos de texto vazios e campos de texto com entradas inválidas!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(button, "Campos de texto com entradas inválidas!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
+                        break;
+                    case 1:
+                        JOptionPane.showMessageDialog(button, "Campos de texto vazios!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+    }
     @Contract(pure = true)
     static JPanel getCurrentPanel() {
         return currentPanel;

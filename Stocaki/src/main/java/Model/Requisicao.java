@@ -13,7 +13,6 @@ public class Requisicao {
     private String cor;
     private int id_funcionario;
     private int saldo;
-
     private String nome_funcionario;
 
     @Contract(pure = true)
