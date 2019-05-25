@@ -13,7 +13,7 @@ import java.io.IOException;
 
 class Framework {
 
-    enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM}
+    enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM, PRODUTOS_OPR, REQUISICAO_OPR}
 
     static final Font TABLE_HEADER = new Font("Segoe UI", Font.BOLD , 24),
                       TABLE_BODY = new Font("Segoe UI", Font.PLAIN, 24);
@@ -120,6 +120,10 @@ class Framework {
         switch (target) {
             case REQUISICOES_ADM:
                 new RequisicoesAdm();
+                self.dispose();
+                break;
+            case REQUISICAO_OPR:
+                new RequisicaoOpr();
                 self.dispose();
                 break;
             default:
