@@ -102,6 +102,21 @@ public class RequisicoesAdm extends JFrame{
                         }
                     }
                 }
+                for (int k = 0; k < 9; k++) {
+                    if (dm.getColumnName(k).contains("▼ ")) {
+                        List<Object> values = new ArrayList<Object>();
+                        for (int i = 0; i < dm.getRowCount(); i++) {
+                            values.add(requisicoesTable.getValueAt(i,k));
+                            for (int j = 0; j < i; j++) {
+                                if (requisicoesTable.getValueAt(i,k).toString().compareToIgnoreCase(values.get(j).toString()) < 0) {
+                                    dm.moveRow(i,i,j);
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                }
             }
         });
         requisicoesTable.addMouseListener(new MouseAdapter() {
@@ -113,13 +128,24 @@ public class RequisicoesAdm extends JFrame{
                     case 7:
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
-                            //TODO
+                            Requisicao requisicao = new Requisicao();
+                            requisicao.setStatus_aprovacao("A");
+                            requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
+                            requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
+                            requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
+                            requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
+                            requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
+                            requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
+                            requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString()));
+                            RequisicaoDAO.approveRequisicao(requisicao);
                         }
                         break;
                     case 8:
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja NEGAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
-                            //TODO
+                            Requisicao requisicao = new Requisicao();
+                            requisicao.setStatus_aprovacao("E");
+                            RequisicaoDAO.approveRequisicao(requisicao);
                         }
                         break;
                     default:

@@ -36,7 +36,6 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-        //transicao de tela
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new MenuAdm();

@@ -1,5 +1,7 @@
 package Model;
 
+import org.jetbrains.annotations.Contract;
+
 public class Requisicao {
     private int id_requisicao;
     private String status_aprovacao;
@@ -12,6 +14,7 @@ public class Requisicao {
     private int id_funcionario;
     private int saldo;
 
+    @Contract(pure = true)
     public Requisicao() {
 
     }
