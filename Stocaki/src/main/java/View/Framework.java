@@ -1,5 +1,7 @@
 package View;
 
+import DAO.RequisicaoDAO;
+import Model.Requisicao;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,6 +12,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 class Framework {
@@ -221,6 +224,21 @@ class Framework {
                         break;
                     case 1:
                         JOptionPane.showMessageDialog(button, "Campos de texto vazios!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
+                        break;
+                    case 0:
+                        Requisicao requisicao = new Requisicao();
+                        for (JTextField textField : textFields) {
+                            requisicao.setNome(textField.getText().trim());
+                            // . . . add others
+                        }
+                        try{
+                            RequisicaoDAO.createRequisicao(requisicao);
+                            for (JTextField textField : textFields) {
+                                textField.setText("");
+                            }
+                        } catch(Exception ex) {
+                            JOptionPane.showMessageDialog(button, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
+                        }
                         break;
                     default:
                         break;

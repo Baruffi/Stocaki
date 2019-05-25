@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Requisicao;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.*;
@@ -56,26 +57,22 @@ public class RequisicaoDAO {
         }
         return requisicoes;
     }
-    public static void createRequisicao(Requisicao requisicao) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            con = dataConnection.getConnection();
-            ps = con.prepareStatement(CREATE);
-            ps.setString(1, requisicao.getNome());
-            ps.setString(2, requisicao.getModelo());
-            ps.setString(3, requisicao.getDescricao());
-            ps.setString(4, requisicao.getClassificacao());
-            ps.setString(5, requisicao.getLote());
-            ps.setString(6, requisicao.getCor());
-            ps.setInt(7, requisicao.getId_funcionario());
-            ps.setInt(8, requisicao.getSaldo());
-            ps.execute();
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            dataConnection.closeConnection(con, ps);
-        }
+    public static void createRequisicao(@NotNull Requisicao requisicao) throws Exception {
+        Connection con = dataConnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(CREATE);
+
+        ps.setString(1, requisicao.getNome());
+        ps.setString(2, requisicao.getModelo());
+        ps.setString(3, requisicao.getDescricao());
+        ps.setString(4, requisicao.getClassificacao());
+        ps.setString(5, requisicao.getLote());
+        ps.setString(6, requisicao.getCor());
+        ps.setInt(7, requisicao.getId_funcionario());
+        ps.setInt(8, requisicao.getSaldo());
+
+        ps.execute();
+
+        dataConnection.closeConnection(con, ps);
     }
     public static void approveRequisicao(Requisicao requisicao) {
         Connection con = null;
