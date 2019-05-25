@@ -240,10 +240,10 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0",approve_icon,reject_icon});
+        //dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6",approve_icon,reject_icon});
+        //dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
+        //dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
+        //dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0",approve_icon,reject_icon});
 
         for (Requisicao requisicao:
                 requisicoes) {
