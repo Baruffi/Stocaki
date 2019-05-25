@@ -60,7 +60,6 @@ public class RequisicoesAdm extends JFrame{
     };
 
     private List<Object[]> removedRows = new ArrayList<Object[]>();
-    //private List<Integer> coloredIcons = new ArrayList<Integer>();
     private int coloredIcon = -1;
 
     private ImageIcon stocaki_icon = new ImageIcon(Framework.ICONE_CAIXA);
@@ -162,6 +161,34 @@ public class RequisicoesAdm extends JFrame{
                 }
             }
         });
+        requisicoesTable.getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (dm.getColumnName(requisicoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
+                    return;
+                }
+                String[] header = { requisicoesTable.getColumnName(0), "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Aprovar", "Negar"};
+                List<Object> values = new ArrayList<Object>();
+                for (int i = 0; i < dm.getRowCount(); i++) {
+                    values.add(requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())));
+                    for (int j = 0; j < i; j++) {
+                        if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(values.get(j).toString()) > 0) {
+                            dm.moveRow(i,i,j);
+                            break;
+                        }
+                    }
+                }
+                header[requisicoesTable.columnAtPoint(e.getPoint())] = "▼ " + header[requisicoesTable.columnAtPoint(e.getPoint())];
+                dm.setColumnIdentifiers(header);
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                requisicoesTable.getTableHeader().setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            }
+        });
     }
 
     private void initComponents() {
@@ -186,8 +213,9 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeL","Branca","6",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"teste2","teste","teste teste","testeC","testeL","Preta","7",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0",approve_icon,reject_icon});
 
         for (Requisicao requisicao:
                 requisicoes) {

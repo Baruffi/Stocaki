@@ -99,11 +99,11 @@ class Framework {
     }
 
     static void addToMenu(@NotNull final JPanel panel, final JFrame self, final VIEW target) {
+        panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 panel.setBackground(Framework.SELECTED);
-                panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
             @Override
             public void mouseExited(MouseEvent e) {
