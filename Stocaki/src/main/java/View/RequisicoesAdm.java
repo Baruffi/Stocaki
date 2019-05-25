@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,8 @@ public class RequisicoesAdm extends JFrame{
     };
 
     private List<Object[]> removedRows = new ArrayList<Object[]>();
+    //private List<Integer> coloredIcons = new ArrayList<Integer>();
+    private int coloredIcon = -1;
 
     private ImageIcon stocaki_icon = new ImageIcon(Framework.ICONE_CAIXA);
     private ImageIcon approve_icon = new ImageIcon(Framework.ICONE_APROVAR);
@@ -109,27 +112,53 @@ public class RequisicoesAdm extends JFrame{
                 int answer;
                 switch (requisicoesTable.columnAtPoint(e.getPoint())) {
                     case 7:
-                        dm.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), 7);
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
                             //TODO
-                        } else {
-                            dm.setValueAt(approve_icon, requisicoesTable.rowAtPoint(e.getPoint()), 7);
                         }
-
                         break;
                     case 8:
-                        dm.setValueAt(reject_red, requisicoesTable.rowAtPoint(e.getPoint()), 8);
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja NEGAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
                             //TODO
-                        } else {
-                            dm.setValueAt(reject_icon, requisicoesTable.rowAtPoint(e.getPoint()), 8);
                         }
-
                         break;
                     default:
                         break;
+                }
+            }
+        });
+        requisicoesTable.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                super.mouseMoved(e);
+                if (coloredIcon != -1) {
+                    dm.setValueAt(approve_icon, coloredIcon, 7);
+                    dm.setValueAt(reject_icon, coloredIcon, 8);
+                    coloredIcon = -1;
+                }
+                if (requisicoesTable.columnAtPoint(e.getPoint()) == 7) {
+                    requisicoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    dm.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), 7);
+                    coloredIcon = requisicoesTable.rowAtPoint(e.getPoint());
+                } else if (requisicoesTable.columnAtPoint(e.getPoint()) == 8) {
+                    requisicoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    dm.setValueAt(reject_red, requisicoesTable.rowAtPoint(e.getPoint()), 8);
+                    coloredIcon = requisicoesTable.rowAtPoint(e.getPoint());
+                } else {
+                    requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            }
+        });
+        requisicoesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                if (coloredIcon != -1) {
+                    dm.setValueAt(approve_icon, coloredIcon, 7);
+                    dm.setValueAt(reject_icon, coloredIcon, 8);
+                    coloredIcon = -1;
                 }
             }
         });
