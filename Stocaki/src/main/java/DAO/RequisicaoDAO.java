@@ -41,6 +41,19 @@ public class RequisicaoDAO {
         } finally {
             dataConnection.closeConnection(con, ps, rs);
         }
+        for (Requisicao requisicao2 : requisicoes) {
+            try {
+                con = dataConnection.getConnection();
+                ps = con.prepareStatement(FIND_FUNCIONARIO);
+                ps.setInt(1, requisicao2.getId_funcionario());
+                rs = ps.executeQuery();
+                requisicao2.setNome_funcionario(rs.getString("NOME"));
+            } catch(Exception e) {
+                e.printStackTrace();
+            } finally {
+                dataConnection.closeConnection(con, ps, rs);
+            }
+        }
         return requisicoes;
     }
     public static void createRequisicao(Requisicao requisicao) {

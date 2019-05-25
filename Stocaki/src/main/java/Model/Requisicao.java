@@ -14,6 +14,8 @@ public class Requisicao {
     private int id_funcionario;
     private int saldo;
 
+    private String nome_funcionario;
+
     @Contract(pure = true)
     public Requisicao() {
 
@@ -97,5 +99,13 @@ public class Requisicao {
 
     public void setSaldo(int saldo) {
         this.saldo = saldo;
+    }
+
+    public String getNome_funcionario() {
+        return nome_funcionario;
+    }
+
+    public void setNome_funcionario(String nome_funcionario) {
+        this.nome_funcionario = nome_funcionario;
     }
 }
