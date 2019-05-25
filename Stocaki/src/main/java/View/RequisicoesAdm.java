@@ -168,12 +168,12 @@ public class RequisicoesAdm extends JFrame{
                 if (dm.getColumnName(requisicoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
                     return;
                 }
-                String[] header = { requisicoesTable.getColumnName(0), "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Aprovar", "Negar"};
+                String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Aprovar", "Negar"};
                 List<Object> values = new ArrayList<Object>();
                 for (int i = 0; i < dm.getRowCount(); i++) {
                     values.add(requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())));
                     for (int j = 0; j < i; j++) {
-                        if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(values.get(j).toString()) > 0) {
+                        if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(values.get(j).toString()) < 0) {
                             dm.moveRow(i,i,j);
                             break;
                         }
@@ -203,6 +203,7 @@ public class RequisicoesAdm extends JFrame{
         searchLabel.setIcon(search_icon);
         searchLabel.setText("");
 
+        requisicoesTable.getTableHeader().setReorderingAllowed(false);
         requisicoesTable.getTableHeader().setFont(Framework.TABLE_HEADER);
         requisicoesTable.setFont(Framework.TABLE_BODY);
 
@@ -215,6 +216,7 @@ public class RequisicoesAdm extends JFrame{
 
         dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6",approve_icon,reject_icon});
         dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7",approve_icon,reject_icon});
         dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0",approve_icon,reject_icon});
 
         for (Requisicao requisicao:
