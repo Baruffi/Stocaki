@@ -11,8 +11,8 @@ public class RequisicaoDAO {
     private static final String SELECT = "SELECT * FROM REQUISICAO WHERE STATUS_APROVACAO = E";
     private static final String CREATE = "INSERT INTO REQUISICAO (NOME, MODELO, DESCRICAO, CLASSIFICACAO, LOTE, COR, ID_FUNCIONARIO, SALDO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String CREATE_PRODUTO = "INSERT INTO PRODUTO (NOME, MODELO, DESCRICAO, CLASSIFICACAO, LOTE, COR, SALDO) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String FIND_FUNCIONARIO = "SELECT NOME FROM FUNCIONARIO WHERE ID_FUNCIONARIO = ?";
     private static final String APPROVE = "INSERT INTO REQUISICAO (STATUS_APROVACAO) VALUES (?)";
-    private static final String DELETE = "DELETE * FROM REQUISICAO WHERE REQUISICAO_ID = ?";
 
     public static List<Requisicao> readRequisicoes() {
         Connection con = null;
@@ -85,20 +85,6 @@ public class RequisicaoDAO {
                 ps.setInt(7, requisicao.getSaldo());
                 ps.execute();
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            dataConnection.closeConnection(con, ps);
-        }
-    }
-    public static void deleteRequisicao(Requisicao requisicao) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            con = dataConnection.getConnection();
-            ps = con.prepareStatement(DELETE);
-            ps.setInt(1, requisicao.getId_requisicao());
-            ps.execute();
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
