@@ -76,11 +76,12 @@ public class RequisicoesAdm extends JFrame{
     RequisicoesAdm() {
         initComponents();
         Framework.setup(this, menuPanel);
+
         searchBar.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
-                int count = 0;
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+
                 for (int i = dm.getRowCount()-1; i >= 0; i--) {
                     List<Object> removedRow = new ArrayList<Object>();
                     boolean remove = true;
@@ -97,6 +98,9 @@ public class RequisicoesAdm extends JFrame{
                         dm.removeRow(i);
                     }
                 }
+
+                int count = 0;
+
                 for (int i = removedRows.size()-1; i >= 0; i--) {
                     Object[] removedRow = removedRows.get(i);
                     for (Object removedCell:
@@ -109,8 +113,10 @@ public class RequisicoesAdm extends JFrame{
                         }
                     }
                 }
+
                 int check = 0;
                 int k;
+
                 for (k = 0; k < dm.getColumnCount()-2; k++) {
                     if (dm.getColumnName(k).contains("▼ ")) {
                         check = 1;
@@ -121,6 +127,7 @@ public class RequisicoesAdm extends JFrame{
                         break;
                     }
                 }
+
                 while(count > 0) {
                     switch (check) {
                         case 2:
@@ -260,7 +267,6 @@ public class RequisicoesAdm extends JFrame{
                         dm.setColumnIdentifiers(header);
                     }
                 }
-
             }
         });
         requisicoesTable.getTableHeader().addMouseMotionListener(new MouseMotionAdapter() {
@@ -293,9 +299,11 @@ public class RequisicoesAdm extends JFrame{
         searchLabel.setIcon(search_icon);
         searchLabel.setText("");
 
+        requisicoesTable.setSelectionBackground(Framework.SOFTGRAY);
+        requisicoesTable.setFont(Framework.TABLE_BODY);
+
         requisicoesTable.getTableHeader().setReorderingAllowed(false);
         requisicoesTable.getTableHeader().setFont(Framework.TABLE_HEADER);
-        requisicoesTable.setFont(Framework.TABLE_BODY);
 
         List<Requisicao> requisicoes = null;
 
