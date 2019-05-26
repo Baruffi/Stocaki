@@ -150,6 +150,7 @@ public class RequisicoesAdm extends JFrame{
                             dm.moveRow(dm.getRowCount()-count, dm.getRowCount()-count, removedRowsPos.get(removedRowsPos.size()-1));
                             break;
                     }
+
                     removedRowsPos.remove(removedRowsPos.size()-1);
                     count--;
                 }
@@ -159,7 +160,9 @@ public class RequisicoesAdm extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
                 int answer;
+
                 switch (requisicoesTable.columnAtPoint(e.getPoint())) {
                     case APPROVE:
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
@@ -206,11 +209,13 @@ public class RequisicoesAdm extends JFrame{
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
+
                 if (coloredIcon != -1) {
                     dm.setValueAt(approve_icon, coloredIcon, APPROVE);
                     dm.setValueAt(reject_icon, coloredIcon, REPROVE);
                     coloredIcon = -1;
                 }
+
                 if (requisicoesTable.columnAtPoint(e.getPoint()) == APPROVE) {
                     requisicoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
                     dm.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), APPROVE);
@@ -228,7 +233,9 @@ public class RequisicoesAdm extends JFrame{
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
+
                 requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+
                 if (coloredIcon != -1) {
                     dm.setValueAt(approve_icon, coloredIcon, APPROVE);
                     dm.setValueAt(reject_icon, coloredIcon, REPROVE);
@@ -240,9 +247,11 @@ public class RequisicoesAdm extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar"};
+
                 if(!(requisicoesTable.columnAtPoint(e.getPoint()) == APPROVE || requisicoesTable.columnAtPoint(e.getPoint()) == REPROVE)) {
                     if (dm.getColumnName(requisicoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
-                        String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar"};
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
                                 if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(requisicoesTable.getValueAt(j,requisicoesTable.columnAtPoint(e.getPoint())).toString()) > 0) {
@@ -254,7 +263,6 @@ public class RequisicoesAdm extends JFrame{
                         header[requisicoesTable.columnAtPoint(e.getPoint())] = "▲ " + header[requisicoesTable.columnAtPoint(e.getPoint())];
                         dm.setColumnIdentifiers(header);
                     } else {
-                        String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar"};
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
                                 if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(requisicoesTable.getValueAt(j,requisicoesTable.columnAtPoint(e.getPoint())).toString()) < 0) {
@@ -263,6 +271,7 @@ public class RequisicoesAdm extends JFrame{
                                 }
                             }
                         }
+
                         header[requisicoesTable.columnAtPoint(e.getPoint())] = "▼ " + header[requisicoesTable.columnAtPoint(e.getPoint())];
                         dm.setColumnIdentifiers(header);
                     }
@@ -273,6 +282,7 @@ public class RequisicoesAdm extends JFrame{
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
+
                 if (requisicoesTable.columnAtPoint(e.getPoint()) == APPROVE || requisicoesTable.columnAtPoint(e.getPoint()) == REPROVE) {
                     requisicoesTable.getTableHeader().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 } else {
@@ -318,10 +328,10 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6","Ronaldo",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7","Geraldo",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7","Michael",approve_icon,reject_icon});
-        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0","Geraldo",approve_icon,reject_icon});
+//        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6","Ronaldo",approve_icon,reject_icon});
+//        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7","Geraldo",approve_icon,reject_icon});
+//        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7","Michael",approve_icon,reject_icon});
+//        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0","Geraldo",approve_icon,reject_icon});
 
         if (requisicoes != null) {
             for (Requisicao requisicao:
