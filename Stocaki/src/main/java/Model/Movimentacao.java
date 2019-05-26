@@ -2,9 +2,11 @@ package Model;
 
 import org.jetbrains.annotations.Contract;
 
+import java.sql.Date;
+
 public class Movimentacao {
     private int id_movimentacao;
-    private String dataEHora;
+    private Date dataEHora;
     private String movimentacaoType;
     //verificar quando model do produto estiver implementada.
     private int saldo;
@@ -23,10 +25,10 @@ public class Movimentacao {
         this.id_movimentacao = id_movimentacao;
     }
 
-    public String getDataEHora(){
+    public Date getDataEHora(){
         return dataEHora;
     }
-    public void setDataEHora(String dataEHora){
+    public void setDataEHora(Date dataEHora){
         this.dataEHora = dataEHora;
     }
 
@@ -44,10 +46,11 @@ public class Movimentacao {
         this.saldo = saldo;
     }
 
-    private int getId_produto(){
+    @Contract(pure = true)
+    public int getId_produto(){
         return id_produto;
     }
-    private void setId_produto(int id_produto){
+    public void setId_produto(int id_produto){
         this.id_produto = id_produto;
     }
 
@@ -58,27 +61,3 @@ public class Movimentacao {
         this.id_funcionario = id_funcionario;
     }
 }
-
-
-
-
-/*
-
-
-    public String getStatus_aprovacao() {
-        return status_aprovacao;
-    }
-
-    public void setStatus_aprovacao(String status_aprovacao) {
-        this.status_aprovacao = status_aprovacao;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-*/
