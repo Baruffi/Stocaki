@@ -15,8 +15,8 @@ class DataConnection {
             Class.forName(driver);
             con = DriverManager.getConnection(
                     url, user, password);
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
         return con;
     }
@@ -32,8 +32,8 @@ class DataConnection {
             if (con != null) {
                 con.close();
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -45,8 +45,8 @@ class DataConnection {
             if (con != null) {
                 con.close();
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -55,8 +55,8 @@ class DataConnection {
             if (con != null) {
                 con.close();
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
     }
 }

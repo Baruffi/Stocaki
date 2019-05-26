@@ -38,8 +38,8 @@ public class Login extends JFrame {
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //new MenuAdm();
-                new MenuOpr();
+                new MenuAdm();
+                //new MenuOpr();
                 dispose();
             }
         });

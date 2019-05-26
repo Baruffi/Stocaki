@@ -80,7 +80,7 @@ public class Framework {
                     panel.setPreferredSize(imagePanel.getSize());
                 }
             });
-        } catch (IOException e) {
+        } catch (IOException ex) {
             System.out.println("Imagem de fundo inválida!");
 
             if (extendedState == JFrame.MAXIMIZED_BOTH || extendedState == JFrame.MAXIMIZED_HORIZ || extendedState == JFrame.MAXIMIZED_VERT) {

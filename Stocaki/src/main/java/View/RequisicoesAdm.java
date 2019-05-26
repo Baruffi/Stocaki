@@ -126,23 +126,36 @@ public class RequisicoesAdm extends JFrame{
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
                             Requisicao requisicao = new Requisicao();
+                            //TODO: find a way to add ID_REQUISICAO
                             requisicao.setStatus_aprovacao("A");
-                            requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
-                            requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
-                            requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
-                            requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
-                            requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
-                            requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
-                            requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString()));
-                            RequisicaoDAO.approveRequisicao(requisicao);
+                            requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString());
+                            requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
+                            requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
+                            requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
+                            requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
+                            requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
+                            requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString()));
+                            //TODO: find a way to add ID_FUNCIONARIO
+                            try{
+                                RequisicaoDAO.approveRequisicao(requisicao);
+                                dm.removeRow(requisicoesTable.rowAtPoint(e.getPoint()));
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(requisicoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                            }
                         }
                         break;
                     case REPROVE:
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja REPROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
                             Requisicao requisicao = new Requisicao();
+                            //TODO: find a way to add ID_REQUISICAO
                             requisicao.setStatus_aprovacao("E");
-                            RequisicaoDAO.approveRequisicao(requisicao);
+                            try{
+                                RequisicaoDAO.approveRequisicao(requisicao);
+                                dm.removeRow(requisicoesTable.rowAtPoint(e.getPoint()));
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(requisicoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                            }
                         }
                         break;
                     default:
@@ -239,8 +252,6 @@ public class RequisicoesAdm extends JFrame{
     }
 
     private void initComponents() {
-        List<Requisicao> requisicoes;
-
         menuPanel.setOpaque(false);
         topbarPanel.setOpaque(false);
         bodyPanel.setOpaque(false);
@@ -254,7 +265,13 @@ public class RequisicoesAdm extends JFrame{
         requisicoesTable.getTableHeader().setFont(Framework.TABLE_HEADER);
         requisicoesTable.setFont(Framework.TABLE_BODY);
 
-        requisicoes = RequisicaoDAO.readRequisicoes();
+        List<Requisicao> requisicoes = null;
+
+        try{
+            requisicoes = RequisicaoDAO.readRequisicoes();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(requisicoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+        }
 
         String[] header = { "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar"};
 
@@ -266,9 +283,11 @@ public class RequisicoesAdm extends JFrame{
 //        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7","Michael",approve_icon,reject_icon});
 //        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0","Geraldo",approve_icon,reject_icon});
 
-        for (Requisicao requisicao:
-                requisicoes) {
-            dm.addRow(new Object[]{requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(),requisicao.getNome_funcionario(),approve_icon,reject_icon});
+        if (requisicoes != null) {
+            for (Requisicao requisicao:
+                    requisicoes) {
+                dm.addRow(new Object[]{requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(),requisicao.getNome_funcionario(),approve_icon,reject_icon});
+            }
         }
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
