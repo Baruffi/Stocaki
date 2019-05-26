@@ -75,10 +75,8 @@ public class RequisicoesAdm extends JFrame{
     private ImageIcon reject_red = new ImageIcon(Framework.ICONE_DELETAR_VERMELHO);
     private ImageIcon search_icon = new ImageIcon(Framework.ICONE_BUSCA);
 
-    private static final String[] header = { "ID", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "ID Requerente", "Requerente", "Aprovar", "Reprovar" };
-
-    private static final int APPROVE = 10,
-                             REPROVE = 11;
+    private static final int APPROVE = 8,
+                             REPROVE = 9;
 
     RequisicoesAdm() {
         initComponents();
@@ -93,11 +91,13 @@ public class RequisicoesAdm extends JFrame{
                     List<Object> removedRow = new ArrayList<Object>();
                     boolean remove = true;
                     for (int j = 0; j < dm.getColumnCount(); j++) {
-                        if (requisicoesTable.getValueAt(i,j).toString().toLowerCase().contains(searchBar.getText().toLowerCase())) {
-                            remove = false;
-                            break;
+                        if (j < dm.getColumnCount()-2) {
+                            if (requisicoesTable.getValueAt(i,j).toString().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+                                remove = false;
+                                break;
+                            }
                         }
-                        removedRow.add(requisicoesTable.getValueAt(i,j));
+                        removedRow.add(dm.getValueAt(i,j));
                     }
                     if (remove) {
                         removedRows.add(removedRow.toArray());
@@ -124,12 +124,12 @@ public class RequisicoesAdm extends JFrame{
                 int check = 0;
                 int k;
 
-                for (k = 0; k < dm.getColumnCount()-2; k++) {
-                    if (dm.getColumnName(k).contains("▼ ")) {
+                for (k = 0; k < requisicoesTable.getColumnCount()-2; k++) {
+                    if (requisicoesTable.getColumnName(k).contains("▼ ")) {
                         check = 1;
                         break;
                     }
-                    if (dm.getColumnName(k).contains("▲ ")) {
+                    if (requisicoesTable.getColumnName(k).contains("▲ ")) {
                         check = 2;
                         break;
                     }
@@ -185,15 +185,15 @@ public class RequisicoesAdm extends JFrame{
                                 requisicao.setId_armazem(answer);
                                 requisicao.setStatus_aprovacao("A");
 
-                                requisicao.setId_requisicao(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
-                                requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
-                                requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
-                                requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
-                                requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
-                                requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
-                                requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
-                                requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString()));
-                                requisicao.setId_funcionario(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),8).toString()));
+                                requisicao.setId_requisicao(Integer.parseInt(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                requisicao.setId_funcionario(Integer.parseInt(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString()));
+                                requisicao.setNome(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
+                                requisicao.setModelo(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
+                                requisicao.setDescricao(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
+                                requisicao.setClassificacao(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
+                                requisicao.setLote(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
+                                requisicao.setCor(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString());
+                                requisicao.setSaldo(Integer.parseInt(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),8).toString()));
 
                                 try{
                                     requisicaoDAO.approveRequisicao(requisicao);
@@ -213,7 +213,7 @@ public class RequisicoesAdm extends JFrame{
 
                             requisicao.setStatus_aprovacao("R");
 
-                            requisicao.setId_requisicao(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                            requisicao.setId_requisicao(Integer.parseInt(dm.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
 
                             try{
                                 requisicaoDAO.approveRequisicao(requisicao);
@@ -234,18 +234,18 @@ public class RequisicoesAdm extends JFrame{
                 super.mouseMoved(e);
 
                 if (coloredIcon != -1) {
-                    dm.setValueAt(approve_icon, coloredIcon, APPROVE);
-                    dm.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
+                    requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
                     coloredIcon = -1;
                 }
 
                 if (requisicoesTable.columnAtPoint(e.getPoint()) == APPROVE) {
                     requisicoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    dm.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), APPROVE);
+                    requisicoesTable.setValueAt(approve_green, requisicoesTable.rowAtPoint(e.getPoint()), APPROVE);
                     coloredIcon = requisicoesTable.rowAtPoint(e.getPoint());
                 } else if (requisicoesTable.columnAtPoint(e.getPoint()) == REPROVE) {
                     requisicoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    dm.setValueAt(reject_red, requisicoesTable.rowAtPoint(e.getPoint()), REPROVE);
+                    requisicoesTable.setValueAt(reject_red, requisicoesTable.rowAtPoint(e.getPoint()), REPROVE);
                     coloredIcon = requisicoesTable.rowAtPoint(e.getPoint());
                 } else {
                     requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -260,8 +260,8 @@ public class RequisicoesAdm extends JFrame{
                 requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
                 if (coloredIcon != -1) {
-                    dm.setValueAt(approve_icon, coloredIcon, APPROVE);
-                    dm.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
+                    requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
                     coloredIcon = -1;
                 }
             }
@@ -271,10 +271,10 @@ public class RequisicoesAdm extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                String[] new_header = { "ID", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "ID Requerente", "Requerente", "Aprovar", "Reprovar" };
+                String[] header = { "ID", "ID Requerente", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar" };
 
                 if(!(requisicoesTable.columnAtPoint(e.getPoint()) == APPROVE || requisicoesTable.columnAtPoint(e.getPoint()) == REPROVE)) {
-                    if (dm.getColumnName(requisicoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
+                    if (requisicoesTable.getColumnName(requisicoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
                                 if (requisicoesTable.getValueAt(i,requisicoesTable.columnAtPoint(e.getPoint())).toString().compareToIgnoreCase(requisicoesTable.getValueAt(j,requisicoesTable.columnAtPoint(e.getPoint())).toString()) > 0) {
@@ -283,8 +283,7 @@ public class RequisicoesAdm extends JFrame{
                                 }
                             }
                         }
-                        new_header[requisicoesTable.columnAtPoint(e.getPoint())] = "▲ " + new_header[requisicoesTable.columnAtPoint(e.getPoint())];
-                        dm.setColumnIdentifiers(new_header);
+                        header[requisicoesTable.columnAtPoint(e.getPoint())+2] = "▲ " + header[requisicoesTable.columnAtPoint(e.getPoint())+2];
                     } else {
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
@@ -294,9 +293,12 @@ public class RequisicoesAdm extends JFrame{
                                 }
                             }
                         }
-                        new_header[requisicoesTable.columnAtPoint(e.getPoint())] = "▼ " + new_header[requisicoesTable.columnAtPoint(e.getPoint())];
-                        dm.setColumnIdentifiers(new_header);
+                        header[requisicoesTable.columnAtPoint(e.getPoint())+2] = "▼ " + header[requisicoesTable.columnAtPoint(e.getPoint())+2];
                     }
+                    dm.setColumnIdentifiers(header);
+
+                    requisicoesTable.getColumnModel().removeColumn(requisicoesTable.getColumn("ID"));
+                    requisicoesTable.getColumnModel().removeColumn(requisicoesTable.getColumn("ID Requerente"));
                 }
             }
         });
@@ -322,6 +324,8 @@ public class RequisicoesAdm extends JFrame{
     }
 
     private void initComponents() {
+        String[] header = { "ID", "ID Requerente", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar" };
+
         menuPanel.setOpaque(false);
         topbarPanel.setOpaque(false);
         bodyPanel.setOpaque(false);
@@ -354,9 +358,12 @@ public class RequisicoesAdm extends JFrame{
         if (requisicoes != null) {
             for (Requisicao requisicao:
                     requisicoes) {
-                dm.addRow(new Object[]{requisicao.getId_requisicao(), requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(), requisicao.getId_funcionario(), requisicao.getNome_funcionario(), approve_icon, reject_icon});
+                dm.addRow(new Object[]{requisicao.getId_requisicao(), requisicao.getId_funcionario(), requisicao.getNome(), requisicao.getModelo(), requisicao.getDescricao(), requisicao.getClassificacao(), requisicao.getLote(), requisicao.getCor(), requisicao.getSaldo(), requisicao.getNome_funcionario(), approve_icon, reject_icon});
             }
         }
+
+        requisicoesTable.getColumnModel().removeColumn(requisicoesTable.getColumn("ID"));
+        requisicoesTable.getColumnModel().removeColumn(requisicoesTable.getColumn("ID Requerente"));
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
         // Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM); DISABLED!!!
