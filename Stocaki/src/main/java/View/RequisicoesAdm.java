@@ -175,27 +175,32 @@ public class RequisicoesAdm extends JFrame{
                         answer = JOptionPane.showConfirmDialog(requisicoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                         if (answer == JOptionPane.YES_OPTION) {
                             Requisicao requisicao = new Requisicao();
+                            Object[] selection_values;
 
-                            Object[] selection_values = armazemDAO.readIdArmazens().toArray();
+                            try {
+                                selection_values = armazemDAO.readIdArmazens().toArray();
 
-                            answer = Integer.parseInt(JOptionPane.showInputDialog(requisicoesTable, "Insira o ID do armazem no qual o produto deve ser cadastrado", "Escolha do Armazem", JOptionPane.INFORMATION_MESSAGE, stocaki_icon,selection_values,selection_values[0]).toString());
-                            requisicao.setId_armazem(answer);
+                                answer = Integer.parseInt(JOptionPane.showInputDialog(requisicoesTable, "Insira o ID do armazem no qual o produto deve ser cadastrado", "Escolha do Armazem", JOptionPane.INFORMATION_MESSAGE, stocaki_icon,selection_values,selection_values[0]).toString());
 
-                            requisicao.setStatus_aprovacao("A");
+                                requisicao.setId_armazem(answer);
+                                requisicao.setStatus_aprovacao("A");
 
-                            requisicao.setId_requisicao(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
-                            requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
-                            requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
-                            requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
-                            requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
-                            requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
-                            requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
-                            requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString()));
-                            requisicao.setId_funcionario(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),8).toString()));
+                                requisicao.setId_requisicao(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                requisicao.setNome(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),1).toString());
+                                requisicao.setModelo(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),2).toString());
+                                requisicao.setDescricao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),3).toString());
+                                requisicao.setClassificacao(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),4).toString());
+                                requisicao.setLote(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),5).toString());
+                                requisicao.setCor(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),6).toString());
+                                requisicao.setSaldo(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),7).toString()));
+                                requisicao.setId_funcionario(Integer.parseInt(requisicoesTable.getValueAt(requisicoesTable.rowAtPoint(e.getPoint()),8).toString()));
 
-                            try{
-                                requisicaoDAO.approveRequisicao(requisicao);
-                                dm.removeRow(requisicoesTable.rowAtPoint(e.getPoint()));
+                                try{
+                                    requisicaoDAO.approveRequisicao(requisicao);
+                                    dm.removeRow(requisicoesTable.rowAtPoint(e.getPoint()));
+                                } catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(requisicoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                                }
                             } catch (Exception ex) {
                                 JOptionPane.showMessageDialog(requisicoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
                             }
