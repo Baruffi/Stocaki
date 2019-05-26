@@ -1,7 +1,6 @@
 package View;
 
-import DAO.RequisicaoDAO;
-import Model.Requisicao;
+import Controller.Requisicoes;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,12 +11,12 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
-class Framework {
+public class Framework {
 
     enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM, PRODUTOS_OPR, REQUISICAO_OPR}
+    enum CONTROLLER {MOVIMENTACOES, FUNCIONARIOS, PRODUTOS, REQUISICOES}
+    enum INPUT {NUMERICO, ALFABETICO, ALFANUMERICO}
 
     static final Font TABLE_HEADER = new Font("Segoe UI", Font.BOLD , 24),
                       TABLE_BODY = new Font("Segoe UI", Font.PLAIN, 24);
@@ -27,7 +26,7 @@ class Framework {
                        SELECTED = new Color(100,160,100),
                        SOFTGRAY = new Color(162,162,162);
 
-    static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
+    public static final String ICONE_CAIXA = "imgs/iconeCaixa.png",
                         IMAGEM_LOGIN = "imgs/loginImage.png",
                         ICONE_BUSCA = "imgs/iconeBusca2.png",
                         ICONE_APROVAR = "imgs/icons8-checkmark-26.png",
@@ -137,16 +136,46 @@ class Framework {
         }
     }
 
+    static void addToForm(@NotNull final JTextField textField, final JSeparator separator, final JLabel label, @NotNull final INPUT input) {
+        switch (input) {
+            case ALFANUMERICO:
+                textField.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        if (!Character.isLetter(e.getKeyChar()) && !Character.isDigit(e.getKeyChar()) && e.getKeyChar() != ' ') {
+                            e.consume();
+                        }
+                    }
+                });
+                break;
+            case ALFABETICO:
+                textField.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        if (!Character.isLetter(e.getKeyChar()) && e.getKeyChar() != ' ') {
+                            e.consume();
+                        }
+                    }
+                });
+                break;
+            case NUMERICO:
+                textField.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        super.keyTyped(e);
+                        if (!Character.isDigit(e.getKeyChar()) && e.getKeyChar() != ' ') {
+                            e.consume();
+                        }
+                    }
+                });
+                break;
+        }
+        addToForm(textField, separator, label);
+    }
+
     static void addToForm(@NotNull final JTextField textField, final JSeparator separator, final JLabel label) {
-        textField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                super.keyTyped(e);
-                if (!Character.isLetter(e.getKeyChar()) && !Character.isDigit(e.getKeyChar()) && e.getKeyChar() != ' ') {
-                    e.consume();
-                }
-            }
-        });
         textField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -190,7 +219,7 @@ class Framework {
         });
     }
 
-    static void addToForm(@NotNull final JButton button, final JTextField[] textFields, final JSeparator[] separators) {
+    static void submitForm(@NotNull final JButton button, final JTextField[] textFields, final JSeparator[] separators, final CONTROLLER controller) {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -226,23 +255,7 @@ class Framework {
                         JOptionPane.showMessageDialog(button, "Campos de texto vazios!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
                         break;
                     case 0:
-                        Requisicao requisicao = new Requisicao();
-                        requisicao.setNome(textFields[0].getText().trim());
-                        requisicao.setModelo(textFields[1].getText().trim());
-                        requisicao.setDescricao(textFields[2].getText().trim());
-                        requisicao.setClassificacao(textFields[3].getText().trim());
-                        requisicao.setLote(textFields[4].getText().trim());
-                        requisicao.setCor(textFields[5].getText().trim());
-                        requisicao.setSaldo(Integer.parseInt(textFields[6].getText().trim()));
-                        //requisicao.setId_funcionario(Funcionario.getId_funcionario); DESCOMENTAR QND IMPLEMENTADO!
-                        try{
-                            RequisicaoDAO.createRequisicao(requisicao);
-                            for (JTextField textField : textFields) {
-                                textField.setText("");
-                            }
-                        } catch(Exception ex) {
-                            JOptionPane.showMessageDialog(button, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(ICONE_CAIXA));
-                        }
+                        submitToController(button, textFields, controller);
                         break;
                     default:
                         break;
@@ -251,21 +264,33 @@ class Framework {
         });
 
     }
+
+    private static void submitToController(JButton button, JTextField[] textFields, @NotNull CONTROLLER controller) {
+        switch (controller) {
+            case REQUISICOES:
+                Requisicoes.fazerRequisicao(button, textFields);
+                break;
+            default:
+                System.out.println("Controller Inválido!");
+                break;
+        }
+    }
+
     @Contract(pure = true)
-    static JPanel getCurrentPanel() {
+    public static JPanel getCurrentPanel() {
         return currentPanel;
     }
 
-    static void setCurrentPanel(JPanel currentPanel) {
+    public static void setCurrentPanel(JPanel currentPanel) {
         Framework.currentPanel = currentPanel;
     }
 
     @Contract(pure = true)
-    static JFrame getCurrentFrame() {
+    public static JFrame getCurrentFrame() {
         return currentFrame;
     }
 
-    static void setCurrentFrame(JFrame currentFrame) {
+    public static void setCurrentFrame(JFrame currentFrame) {
         Framework.currentFrame = currentFrame;
     }
 }

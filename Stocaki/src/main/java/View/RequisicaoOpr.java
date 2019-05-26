@@ -1,13 +1,6 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RequisicaoOpr extends JFrame {
     private JPanel rootPanel;
@@ -73,17 +66,18 @@ public class RequisicaoOpr extends JFrame {
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.PRODUTOS_OPR);
         //Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR); DISABLED!!!
 
-        Framework.addToForm(nomeField, nomeSeparator, nomeLabel);
-        Framework.addToForm(modeloField, modeloSeparator, modeloLabel);
-        Framework.addToForm(descricaoField, descricaoSeparator, descricaoLabel);
-        Framework.addToForm(classificacaoField, classificacaoSeparator, classificacaoLabel);
-        Framework.addToForm(loteField, loteSeparator, loteLabel);
-        Framework.addToForm(corField, corSeparator, corLabel);
-        Framework.addToForm(saldoField, saldoSeparator, saldoLabel);
+        Framework.addToForm(nomeField, nomeSeparator, nomeLabel, Framework.INPUT.ALFANUMERICO);
+        Framework.addToForm(modeloField, modeloSeparator, modeloLabel, Framework.INPUT.ALFANUMERICO);
+        Framework.addToForm(descricaoField, descricaoSeparator, descricaoLabel, Framework.INPUT.ALFANUMERICO);
+        Framework.addToForm(classificacaoField, classificacaoSeparator, classificacaoLabel, Framework.INPUT.ALFANUMERICO);
+        Framework.addToForm(loteField, loteSeparator, loteLabel, Framework.INPUT.ALFANUMERICO);
+        Framework.addToForm(corField, corSeparator, corLabel, Framework.INPUT.ALFABETICO);
+        Framework.addToForm(saldoField, saldoSeparator, saldoLabel,Framework.INPUT.NUMERICO);
 
         JTextField[] textFields = {nomeField, modeloField, descricaoField, classificacaoField, loteField, corField, saldoField};
         JSeparator[] separators = {nomeSeparator, modeloSeparator, descricaoSeparator, classificacaoSeparator, loteSeparator, corSeparator, saldoSeparator};
-        JLabel[] labels = {nomeLabel, modeloLabel, descricaoLabel, classificacaoLabel, loteLabel, corLabel, saldoLabel};
-        Framework.addToForm(requisitarButton,textFields,separators);
+        //JLabel[] labels = {nomeLabel, modeloLabel, descricaoLabel, classificacaoLabel, loteLabel, corLabel, saldoLabel};
+
+        Framework.submitForm(requisitarButton,textFields,separators, Framework.CONTROLLER.REQUISICOES);
     }
 }
