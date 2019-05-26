@@ -4,9 +4,9 @@ import java.sql.*;
 
 class DataConnection {
 
-    private static final String url = "jdbc:mysql://localhost:3306/stocakiBD?useTimezone=true&serverTimezone=UTC",
+    private static final String url = "jdbc:mysql://localhost:3306/STOCAKIDB?useTimezone=true&serverTimezone=UTC",
                                 user = "root",
-                                password = "root",
+                                password = "",
                                 driver = "com.mysql.cj.jdbc.Driver";
 
     Connection getConnection() {
