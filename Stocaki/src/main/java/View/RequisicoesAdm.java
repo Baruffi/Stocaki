@@ -234,8 +234,12 @@ public class RequisicoesAdm extends JFrame{
                 super.mouseMoved(e);
 
                 if (coloredIcon != -1) {
-                    requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
-                    requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    try {
+                        requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
+                        requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    } catch (Exception ex) {
+                        //pass
+                    }
                     coloredIcon = -1;
                 }
 
@@ -260,8 +264,12 @@ public class RequisicoesAdm extends JFrame{
                 requisicoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
                 if (coloredIcon != -1) {
-                    requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
-                    requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    try {
+                        requisicoesTable.setValueAt(approve_icon, coloredIcon, APPROVE);
+                        requisicoesTable.setValueAt(reject_icon, coloredIcon, REPROVE);
+                    } catch (Exception ex) {
+                        //pass
+                    }
                     coloredIcon = -1;
                 }
             }
