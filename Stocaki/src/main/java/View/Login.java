@@ -52,6 +52,8 @@ public class Login extends JFrame {
                 funcionario.setTelefone(1);
                 funcionario.setEmail("teste@teste.com");
 
+                Framework.setCurrentUser(funcionario);
+
                 new MenuAdm();
 
 //                funcionario.setId_funcionario(2);
@@ -63,8 +65,8 @@ public class Login extends JFrame {
 //                funcionario.setEmail("teste@teste.com");
 //
 //                new MenuOpr();
-
-                Framework.setCurrentUser(funcionario);
+//
+//                Framework.setCurrentUser(funcionario);
 
                 dispose();
             }

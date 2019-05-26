@@ -33,6 +33,8 @@ public class MenuOpr extends JFrame {
         ImageIcon icon = new ImageIcon(Framework.ICONE_CAIXA);
         stocakiLabel.setIcon(icon);
 
+        titleLabel.setText("Bem Vindo, " + Framework.getCurrentUser().getNome() + "!");
+
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.PRODUTOS_OPR);
         Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR);
     }

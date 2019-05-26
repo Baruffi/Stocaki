@@ -44,6 +44,8 @@ public class MenuAdm extends JFrame {
         ImageIcon icon = new ImageIcon(Framework.ICONE_CAIXA);
         stocakiLabel.setIcon(icon);
 
+        titleLabel.setText("Bem Vindo, " + Framework.getCurrentUser().getNome() + "!");
+
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
         Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM);
         Framework.addToMenu(plistPanel,this, Framework.VIEW.PRODUTOS_ADM);
