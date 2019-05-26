@@ -109,8 +109,40 @@ public class RequisicoesAdm extends JFrame{
                         }
                     }
                 }
+                int check = 0;
+                int k;
+                for (k = 0; k < dm.getColumnCount()-2; k++) {
+                    if (dm.getColumnName(k).contains("▼ ")) {
+                        check = 1;
+                        break;
+                    }
+                    if (dm.getColumnName(k).contains("▲ ")) {
+                        check = 2;
+                        break;
+                    }
+                }
                 while(count > 0) {
-                    dm.moveRow(dm.getRowCount()-count, dm.getRowCount()-count, removedRowsPos.get(removedRowsPos.size()-1));
+                    switch (check) {
+                        case 2:
+                            for (int j = 0; j < dm.getRowCount()-count; j++) {
+                                if (requisicoesTable.getValueAt(dm.getRowCount()-count,k).toString().compareToIgnoreCase(requisicoesTable.getValueAt(j,k).toString()) > 0) {
+                                    dm.moveRow(dm.getRowCount()-count,dm.getRowCount()-count,j);
+                                    break;
+                                }
+                            }
+                            break;
+                        case 1:
+                            for (int j = 0; j < dm.getRowCount()-count; j++) {
+                                if (requisicoesTable.getValueAt(dm.getRowCount()-count,k).toString().compareToIgnoreCase(requisicoesTable.getValueAt(j,k).toString()) < 0) {
+                                    dm.moveRow(dm.getRowCount()-count,dm.getRowCount()-count,j);
+                                    break;
+                                }
+                            }
+                            break;
+                        case 0:
+                            dm.moveRow(dm.getRowCount()-count, dm.getRowCount()-count, removedRowsPos.get(removedRowsPos.size()-1));
+                            break;
+                    }
                     removedRowsPos.remove(removedRowsPos.size()-1);
                     count--;
                 }
@@ -278,10 +310,10 @@ public class RequisicoesAdm extends JFrame{
         dm.setColumnIdentifiers(header);
         requisicoesTable.setModel(dm);
 
-//        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6","Ronaldo",approve_icon,reject_icon});
-//        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7","Geraldo",approve_icon,reject_icon});
-//        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7","Michael",approve_icon,reject_icon});
-//        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0","Geraldo",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste1","teste","teste teste","testeC","testeX","Branca","6","Ronaldo",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste2","teste","teste","testeD","testeL","Preta","7","Geraldo",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"teste3","teste","teste","testeD","testeL","Preta","7","Michael",approve_icon,reject_icon});
+        dm.addRow(new Object[]{"micro geladeira","T13I173","Mini geladeira sem freezer com garantia de 2 anos","T13","Q2","Branca","0","Geraldo",approve_icon,reject_icon});
 
         if (requisicoes != null) {
             for (Requisicao requisicao:
