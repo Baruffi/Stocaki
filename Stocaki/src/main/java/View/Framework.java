@@ -227,10 +227,14 @@ class Framework {
                         break;
                     case 0:
                         Requisicao requisicao = new Requisicao();
-                        for (JTextField textField : textFields) {
-                            requisicao.setNome(textField.getText().trim());
-                            // . . . add others
-                        }
+                        requisicao.setNome(textFields[0].getText().trim());
+                        requisicao.setModelo(textFields[1].getText().trim());
+                        requisicao.setDescricao(textFields[2].getText().trim());
+                        requisicao.setClassificacao(textFields[3].getText().trim());
+                        requisicao.setLote(textFields[4].getText().trim());
+                        requisicao.setCor(textFields[5].getText().trim());
+                        requisicao.setSaldo(Integer.parseInt(textFields[6].getText().trim()));
+                        //requisicao.setId_funcionario(Funcionario.getId_funcionario); DESCOMENTAR QND IMPLEMENTADO!
                         try{
                             RequisicaoDAO.createRequisicao(requisicao);
                             for (JTextField textField : textFields) {
