@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Requisicoes;
+import Model.Funcionario;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,6 +42,9 @@ public class Framework {
 
     private static JFrame currentFrame;
     private static JPanel currentPanel;
+    private static Funcionario currentUser;
+
+    private static Requisicoes requisicoes_controller;
 
     static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
         final JFrame callerFrame = getCurrentFrame();
@@ -268,7 +272,7 @@ public class Framework {
     private static void submitToController(JButton button, JTextField[] textFields, @NotNull CONTROLLER controller) {
         switch (controller) {
             case REQUISICOES:
-                Requisicoes.fazerRequisicao(button, textFields);
+                requisicoes_controller.fazerRequisicao(button, textFields);
                 break;
             default:
                 System.out.println("Controller Inválido!");
@@ -292,5 +296,14 @@ public class Framework {
 
     public static void setCurrentFrame(JFrame currentFrame) {
         Framework.currentFrame = currentFrame;
+    }
+
+    @Contract(pure = true)
+    public static Funcionario getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(Funcionario currentUser) {
+        Framework.currentUser = currentUser;
     }
 }

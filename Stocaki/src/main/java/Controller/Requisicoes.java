@@ -6,11 +6,12 @@ import View.Framework;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.util.List;
 
 public class Requisicoes {
-    public static void fazerRequisicao(JButton button, @NotNull JTextField[] textFields) {
-        Requisicao requisicao = new Requisicao();
+    private Requisicao requisicao = new Requisicao();
+    private RequisicaoDAO requisicaoDAO = new RequisicaoDAO();
+
+    public void fazerRequisicao(JButton button, @NotNull JTextField[] textFields) {
         requisicao.setNome(textFields[0].getText().trim());
         requisicao.setModelo(textFields[1].getText().trim());
         requisicao.setDescricao(textFields[2].getText().trim());
@@ -18,9 +19,9 @@ public class Requisicoes {
         requisicao.setLote(textFields[4].getText().trim());
         requisicao.setCor(textFields[5].getText().trim());
         requisicao.setSaldo(Integer.parseInt(textFields[6].getText().trim()));
-        //requisicao.setId_funcionario(Funcionario.getId_funcionario); DESCOMENTAR QND IMPLEMENTADO!
+        requisicao.setId_funcionario(Framework.getCurrentUser().getId_funcionario());
         try{
-            RequisicaoDAO.createRequisicao(requisicao);
+            requisicaoDAO.createRequisicao(requisicao);
             for (JTextField textField : textFields) {
                 textField.setText("");
             }

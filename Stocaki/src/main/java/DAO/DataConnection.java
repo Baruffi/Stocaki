@@ -4,12 +4,12 @@ import java.sql.*;
 
 class DataConnection {
 
-    private static final String url = "jdbc:mysql://localhost:3306/stocakiBD?useTimezone=true&serverTimezone=UTC",
+    private static final String url = "jdbc:mysql://localhost:3306/STOCAKIBD?useTimezone=true&serverTimezone=UTC",
                                 user = "root",
                                 password = "root",
                                 driver = "com.mysql.cj.jdbc.Driver";
 
-    Connection getConnection() {
+    static Connection getConnection() {
         Connection con = null;
         try{
             Class.forName(driver);
@@ -21,7 +21,7 @@ class DataConnection {
         return con;
     }
 
-    void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
+    static void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
         try{
             if (rs != null) {
                 rs.close();
@@ -37,7 +37,7 @@ class DataConnection {
         }
     }
 
-    void closeConnection(Connection con, PreparedStatement ps) {
+    static void closeConnection(Connection con, PreparedStatement ps) {
         try{
             if (ps != null) {
                 ps.close();
@@ -50,7 +50,7 @@ class DataConnection {
         }
     }
 
-    void closeConnection(Connection con) {
+    static void closeConnection(Connection con) {
         try{
             if (con != null) {
                 con.close();

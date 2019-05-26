@@ -1,5 +1,7 @@
 package View;
 
+import Model.Funcionario;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,8 +40,32 @@ public class Login extends JFrame {
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
+                final Funcionario funcionario = new Funcionario();
+
+                funcionario.setId_funcionario(1);
+                funcionario.setNome("teste");
+                funcionario.setCpf(1);
+                funcionario.setCargo("teste");
+                funcionario.setCep(1);
+                funcionario.setNivel_acesso('A');
+                funcionario.setTelefone(1);
+                funcionario.setEmail("teste@teste.com");
+
                 new MenuAdm();
-                //new MenuOpr();
+
+//                funcionario.setId_funcionario(2);
+//                funcionario.setNome("teste");
+//                funcionario.setCpf(2);
+//                funcionario.setCargo("teste");
+//                funcionario.setNivel_acesso('O');
+//                funcionario.setTelefone(1);
+//                funcionario.setEmail("teste@teste.com");
+//
+//                new MenuOpr();
+
+                Framework.setCurrentUser(funcionario);
+
                 dispose();
             }
         });

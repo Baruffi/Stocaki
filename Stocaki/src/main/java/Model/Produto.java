@@ -2,40 +2,28 @@ package Model;
 
 import org.jetbrains.annotations.Contract;
 
-public class Requisicao {
-    private int id_requisicao;
-    private String status_aprovacao;
+public class Produto {
+    private int id_produto;
     private String nome;
     private String modelo;
     private String descricao;
     private String classificacao;
     private String lote;
     private String cor;
-    private int id_funcionario;
     private int saldo;
-    //não existentes no banco
-    private String nome_funcionario;
     private int id_armazem;
 
     @Contract(pure = true)
-    public Requisicao() {
+    public Produto() {
 
     }
 
-    public int getId_requisicao() {
-        return id_requisicao;
+    public int getId_produto() {
+        return id_produto;
     }
 
-    public void setId_requisicao(int id_requisicao) {
-        this.id_requisicao = id_requisicao;
-    }
-
-    public String getStatus_aprovacao() {
-        return status_aprovacao;
-    }
-
-    public void setStatus_aprovacao(String status_aprovacao) {
-        this.status_aprovacao = status_aprovacao;
+    public void setId_produto(int id_produto) {
+        this.id_produto = id_produto;
     }
 
     public String getNome() {
@@ -86,28 +74,12 @@ public class Requisicao {
         this.cor = cor;
     }
 
-    public int getId_funcionario() {
-        return id_funcionario;
-    }
-
-    public void setId_funcionario(int id_funcionario) {
-        this.id_funcionario = id_funcionario;
-    }
-
     public int getSaldo() {
         return saldo;
     }
 
     public void setSaldo(int saldo) {
         this.saldo = saldo;
-    }
-
-    public String getNome_funcionario() {
-        return nome_funcionario;
-    }
-
-    public void setNome_funcionario(String nome_funcionario) {
-        this.nome_funcionario = nome_funcionario;
     }
 
     public int getId_armazem() {
