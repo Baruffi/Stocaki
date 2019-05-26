@@ -234,7 +234,7 @@ public class Framework {
                         } else {
                             error = 1;
                         }
-                    } else if (textFields[i].getText().toUpperCase().trim().matches(".*CREATE.*|.*DROP.*|.*USE.*|.*SELECT.*|.*INSERT.*|.*UPDATE.*|.*DELETE.*|.*FROM.*|.*WHERE.*|.*INTO.*|.*VALUES.*")) {
+                    } else if (textFields[i].getText().toUpperCase().trim().matches(".*CREATE.*|.*DROP.*|.*USE.*|.*SELECT.*|.*INSERT.*|.*UPDATE.*|.*DELETE.*")) {
                         separators[i].setForeground(Color.ORANGE);
                         separators[i].setBackground(Color.ORANGE);
                         if (error == 1 || error == 3) {
