@@ -37,7 +37,7 @@
                 <properties>
                   <font size="48" style="0"/>
                   <foreground color="-1"/>
-                  <text value="Bem Vindo, OPR1!"/>
+                  <text value="Requisitar Produto"/>
                 </properties>
               </component>
             </children>

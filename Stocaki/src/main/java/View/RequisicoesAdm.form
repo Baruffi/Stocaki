@@ -37,7 +37,7 @@
                 <properties>
                   <font size="48" style="0"/>
                   <foreground color="-1"/>
-                  <text value="Bem Vindo, ADM1!"/>
+                  <text value="Listar Requisições"/>
                 </properties>
               </component>
               <grid id="6dc26" binding="searchPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
