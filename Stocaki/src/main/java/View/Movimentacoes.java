@@ -63,7 +63,7 @@ public class Movimentacoes extends JFrame{
 
     private List<Movimentacao> movimentacaoes = null;
     private MovimentacaoDAO movimentacaoDAO = new MovimentacaoDAO();
-    private ArmazemDAO armazemDAO = new ArmazemDAO();
+    //private ArmazemDAO armazemDAO = new ArmazemDAO();
 
     private List<Object[]> removedRows = new ArrayList<Object[]>();
     private List<Integer> removedRowsPos = new ArrayList<Integer>();
@@ -77,13 +77,13 @@ public class Movimentacoes extends JFrame{
     private ImageIcon search_icon = new ImageIcon(Framework.ICONE_BUSCA);
 
     private static final int APPROVE = 8,
-            REPROVE = 9;
+                             REPROVE = 9;
 
     Movimentacoes() {
         initComponents();
         Framework.setup(this, menuPanel);
 
-        /*searchBar.addKeyListener(new KeyAdapter() {
+        searchBar.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
@@ -163,14 +163,14 @@ public class Movimentacoes extends JFrame{
                     count--;
                 }
             }
-        });*/
-        movimentacoesTable.addMouseListener(new MouseAdapter() {
+        });
+        /*movimentacoesTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                //int answer;
-                /*
+                int answer;
+
                 switch (movimentacoesTable.columnAtPoint(e.getPoint())) {
                     case APPROVE:
                         answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
@@ -226,10 +226,10 @@ public class Movimentacoes extends JFrame{
                         break;
                     default:
                         break;
-                } */
+                }
             }
-        });
-        /*movimentacoesTable.addMouseMotionListener(new MouseMotionAdapter() {
+        });*/
+        movimentacoesTable.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
@@ -256,8 +256,8 @@ public class Movimentacoes extends JFrame{
                     movimentacoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }
             }
-        }); */
-        /*movimentacoesTable.addMouseListener(new MouseAdapter() {
+        });
+        movimentacoesTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
@@ -274,8 +274,8 @@ public class Movimentacoes extends JFrame{
                     coloredIcon = -1;
                 }
             }
-        });*/
-        /*movimentacoesTable.getTableHeader().addMouseListener(new MouseAdapter() {
+        });
+        movimentacoesTable.getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -306,12 +306,12 @@ public class Movimentacoes extends JFrame{
                     }
                     dm.setColumnIdentifiers(header);
 
-                    //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
-                    //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
+                    movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
+                    movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
                 }
             }
-        });*/
-        /*movimentacoesTable.getTableHeader().addMouseMotionListener(new MouseMotionAdapter() {
+        });
+        movimentacoesTable.getTableHeader().addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
@@ -322,14 +322,14 @@ public class Movimentacoes extends JFrame{
                     movimentacoesTable.getTableHeader().setCursor(new Cursor(Cursor.HAND_CURSOR));
                 }
             }
-        });*/
-        /*movimentacoesTable.getTableHeader().addMouseListener(new MouseAdapter() {
+        });
+        movimentacoesTable.getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
                 movimentacoesTable.getTableHeader().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
-        });*/
+        });
     }
 
     private void initComponents() {
@@ -351,7 +351,7 @@ public class Movimentacoes extends JFrame{
         movimentacoesTable.getTableHeader().setFont(Framework.TABLE_HEADER);
 
         try{
-            movimentacaoes = movimentacaoDAO.readMovimentacoes();
+            movimentacaoes = movimentacaoDAO.readMovimentacaos();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
         }

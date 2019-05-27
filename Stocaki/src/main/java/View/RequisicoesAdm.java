@@ -76,7 +76,7 @@ public class RequisicoesAdm extends JFrame{
     private ImageIcon search_icon = new ImageIcon(Framework.ICONE_BUSCA);
 
     private static final int APPROVE = 8,
-                             REPROVE = 9;
+            REPROVE = 9;
 
     RequisicoesAdm() {
         initComponents();
