@@ -6,7 +6,7 @@ class DataConnection {
 
     private static final String url = "jdbc:mysql://localhost:3306/STOCAKIBD?useTimezone=true&serverTimezone=UTC",
                                 user = "root",
-                                password = "root",
+                                password = "",
                                 driver = "com.mysql.cj.jdbc.Driver";
 
     static Connection getConnection() {
