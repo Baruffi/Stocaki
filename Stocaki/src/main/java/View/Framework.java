@@ -2,7 +2,6 @@ package View;
 
 import Controller.Requisicoes;
 import Model.Funcionario;
-import Model.Movimentacao;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -136,7 +135,7 @@ public class Framework {
                 self.dispose();
                 break;
             case MOVIMENTACOES_ADM:
-                new Movimentacoes();
+                new MovimentacoesAdm();
                 self.dispose();
                 break;
             default:

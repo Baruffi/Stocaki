@@ -11,7 +11,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movimentacoes extends JFrame{
+public class MovimentacoesAdm extends JFrame{
     private JPanel rootPanel;
     private JPanel menuPanel;
     private JPanel titlePanel;
@@ -49,11 +49,6 @@ public class Movimentacoes extends JFrame{
     private DefaultTableModel dm = new DefaultTableModel(0,0) {
         @Contract(pure = true)
         @Override
-        public Class getColumnClass(int column) {
-            return getValueAt(0, column).getClass();
-        }
-        @Contract(pure = true)
-        @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
@@ -77,7 +72,7 @@ public class Movimentacoes extends JFrame{
     private static final int APPROVE = 8,
                              REPROVE = 9;
 
-    Movimentacoes() {
+    MovimentacoesAdm() {
         initComponents();
         Framework.setup(this, menuPanel);
 
@@ -278,7 +273,7 @@ public class Movimentacoes extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                String[] header = {"ID", "ID Requerente", "Data/Hora", "Movimento", "Saldo", "Produto", "Funcionario", "Aprovar", "Reprovar" };
+                String[] header = {"Data/Hora", "Movimento", "Saldo", "Produto", "Funcionario"};
 
                 if(!(movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE || movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE)) {
                     if (movimentacoesTable.getColumnName(movimentacoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
@@ -290,7 +285,7 @@ public class Movimentacoes extends JFrame{
                                 }
                             }
                         }
-                        header[movimentacoesTable.columnAtPoint(e.getPoint())+2] = "▲ " + header[movimentacoesTable.columnAtPoint(e.getPoint())+2];
+                        header[movimentacoesTable.columnAtPoint(e.getPoint())] = "▲ " + header[movimentacoesTable.columnAtPoint(e.getPoint())];
                     } else {
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
@@ -300,12 +295,12 @@ public class Movimentacoes extends JFrame{
                                 }
                             }
                         }
-                        header[movimentacoesTable.columnAtPoint(e.getPoint())+2] = "▼ " + header[movimentacoesTable.columnAtPoint(e.getPoint())+2];
+                        header[movimentacoesTable.columnAtPoint(e.getPoint())] = "▼ " + header[movimentacoesTable.columnAtPoint(e.getPoint())];
                     }
                     dm.setColumnIdentifiers(header);
 
-                    movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
-                    movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
+                   // movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
+                    //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
                 }
             }
         });
@@ -331,7 +326,7 @@ public class Movimentacoes extends JFrame{
     }
 
     private void initComponents() {
-        String[] header = {"ID", "ID Requerente", "Data/Hora", "Movimento", "Saldo", "Produto", "Funcionario", "Aprovar", "Reprovar" };
+        String[] header = {"Data/Hora", "Movimento", "Saldo", "Produto", "Funcionario"};
 
         menuPanel.setOpaque(false);
         topbarPanel.setOpaque(false);
@@ -360,7 +355,7 @@ public class Movimentacoes extends JFrame{
         if (movimentacaoes != null) {
             for (Movimentacao movimentacoes:
                     movimentacaoes) {
-                dm.addRow(new Object[]{movimentacoes.getDataEHora(), movimentacoes.getMovimentacaoType(), movimentacoes.getSaldo(), movimentacoes.getId_produto(), movimentacoes.getId_funcionario(), approve_icon, reject_icon});
+                dm.addRow(new Object[]{movimentacoes.getDataEHora(), movimentacoes.getMovimentacaoType(), movimentacoes.getSaldo(), movimentacoes.getId_produto(), movimentacoes.getId_funcionario()});
             }
         }
 
