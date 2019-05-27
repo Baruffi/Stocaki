@@ -37,5 +37,7 @@ public class MenuOpr extends JFrame {
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.PRODUTOS_OPR);
         Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR);
+        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACAO_OPR);
+
     }
 }

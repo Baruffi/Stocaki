@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Framework {
 
-    enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM, PRODUTOS_OPR, REQUISICAO_OPR}
+    enum VIEW {FUNCIONARIO_ADM, FUNCIONARIOS_ADM, MOVIMENTACOES_ADM, PRODUTO_ADM, PRODUTOS_ADM, REQUISICOES_ADM, PRODUTOS_OPR, REQUISICAO_OPR, MOVIMENTACAO_OPR}
     enum CONTROLLER {MOVIMENTACOES, FUNCIONARIOS, PRODUTOS, REQUISICOES}
     enum INPUT {NUMERICO, ALFABETICO, ALFANUMERICO}
 
@@ -44,7 +44,7 @@ public class Framework {
     private static JPanel currentPanel;
     private static Funcionario currentUser;
 
-    private static Requisicoes requisicoes_controller;
+    public static Requisicoes requisicoes_controller;
 
     static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
         final JFrame callerFrame = getCurrentFrame();
