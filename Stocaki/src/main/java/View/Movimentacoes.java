@@ -1,9 +1,7 @@
 package View;
 
-import DAO.ArmazemDAO;
 import DAO.MovimentacaoDAO;
 import Model.Movimentacao;
-import Model.Requisicao;
 import org.jetbrains.annotations.Contract;
 
 import javax.swing.*;
@@ -280,7 +278,7 @@ public class Movimentacoes extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                String[] header = { "ID", "ID Requerente", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar" };
+                String[] header = {"ID", "ID Requerente", "Data/Hora", "Movimento", "Saldo", "Produto", "Funcionario", "Aprovar", "Reprovar" };
 
                 if(!(movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE || movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE)) {
                     if (movimentacoesTable.getColumnName(movimentacoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
@@ -366,8 +364,8 @@ public class Movimentacoes extends JFrame{
             }
         }
 
-        movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
-        movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
+        //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
+        //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACOES_ADM);
         Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICOES_ADM);

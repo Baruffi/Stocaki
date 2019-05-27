@@ -12,9 +12,11 @@ import java.util.*;
 public class MovimentacaoDAO {
     private ProdutoDAO produtoDAO = new ProdutoDAO();
 
-    private static final String SELECT = "SELECT * FROM REQUISICAO WHERE STATUS_APROVACAO = 'E'";
-    private static final String CREATE = "INSERT INTO REQUISICAO (NOME, MODELO, DESCRICAO, CLASSIFICACAO, LOTE, COR, ID_FUNCIONARIO, SALDO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String APPROVE = "UPDATE REQUISICAO SET STATUS_APROVACAO = ? WHERE ID_REQUISICAO = ?";
+    private static final DataConnection dataConnection = new DataConnection();
+    private static final String CREATE = "INSERT INTO MOVIMENTACAO (ID_MOVIMENTACAO, DATAEHORA, MOVIMENTACAOTYPE, SALDO, ID_PRODUTO, ID_FUNCIONARIO) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE SALDO >=0";
+    //private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE ID_PRDUTO = ?";
+    private static final String UPDATE = "UPDATE MOVIMENTACAO SET SALDO = ? WHERE ID_PRODUTO = ?";
 
     private Connection con;
     private PreparedStatement ps;
@@ -42,7 +44,8 @@ public class MovimentacaoDAO {
                 movimentacoes.setSaldo(rs.getInt("SALDO"));
                 movimentacoes.setId_produto(rs.getInt("ID_PRODUTO"));
                 movimentacoes.setId_funcionario(rs.getInt("ID_FUNCIONARIO"));
-                //movimentacao.add(movimentacao);
+                movimentacao.add(movimentacoes);
+
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
