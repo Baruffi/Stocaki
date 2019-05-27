@@ -135,6 +135,10 @@ public class Framework {
                 new RequisicaoOpr();
                 self.dispose();
                 break;
+            case MOVIMENTACOES_ADM:
+                new Movimentacoes();
+                self.dispose();
+                break;
             default:
                 System.out.println("Tela Inválida!");
                 break;
