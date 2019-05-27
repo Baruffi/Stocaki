@@ -2,6 +2,7 @@ package View;
 
 import Controller.Requisicoes;
 import Model.Funcionario;
+import Model.Movimentacao;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
