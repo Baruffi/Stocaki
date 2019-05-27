@@ -9,7 +9,9 @@ import java.util.*;
 public class MovimentacaoDAO {
     private static final DataConnection dataConnection = new DataConnection();
     private static final String CREATE = "INSERT INTO MOVIMENTACAO (ID_MOVIMENTACAO, DATAEHORA, MOVIMENTACAOTYPE, SALDO, ID_PRODUTO, ID_FUNCIONARIO) VALUES (?, ?, ?, ?, ?, ?)";
-    private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE ID_PRODUTO = ?";
+    private static final String SELECT = "SELECT * FROM MOVIMENTACAO";
+    //private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE ID_PRODUTO = ?";
+    private static final String UPDATE = "UPDATE MOVIMENTACAO SET SALDO = ? WHERE ID_PRODUTO = ?";
 
     public static List<Movimentacao> readMovimentacoes() {
         Connection con = null;
@@ -30,29 +32,14 @@ public class MovimentacaoDAO {
                 movimentacao.setSaldo(rs.getInt("SALDO"));
                 movimentacao.setId_produto(rs.getInt("ID_PRODUTO"));
                 movimentacao.setId_funcionario(rs.getInt("ID_FUNCIONARIO"));
+                //movimentacao.add(movimentacao);
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
         } finally {
             dataConnection.closeConnection(con, ps, rs);
         }
-        /*
-        for (Movimentacao movimentacao1 : movimentacoes) {
-            try {
-                con = dataConnection.getConnection();
-                ps = con.prepareStatement(FIND_FUNCIONARIO);
 
-                ps.setInt(1, requisicao2.getId_funcionario());
-
-                rs = ps.executeQuery();
-
-                requisicao2.setNome_funcionario(rs.getString("NOME"));
-            } catch(SQLException ex) {
-                ex.printStackTrace();
-            } finally {
-                dataConnection.closeConnection(con, ps, rs);
-            }
-        }*/
         return movimentacoes;
     }
     public static void doMovimentacao(@NotNull Movimentacao movimentacao) {

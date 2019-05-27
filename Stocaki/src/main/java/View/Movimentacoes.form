@@ -45,7 +45,7 @@
                     <properties>
                       <font size="48" style="0"/>
                       <foreground color="-1"/>
-                      <text value="Listar Requisições"/>
+                      <text value="Movimentações"/>
                     </properties>
                   </component>
                   <grid id="fbfd8" binding="searchPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -120,7 +120,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <scrollpane id="83d9c" binding="requisicoesScroll">
+                  <scrollpane id="83d9c" binding="movimentacoesScroll">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -130,7 +130,7 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="79f49" class="javax.swing.JTable" binding="requisicoesTable">
+                      <component id="79f49" class="javax.swing.JTable" binding="movimentacoesTable">
                         <constraints/>
                         <properties>
                           <font size="24"/>

@@ -332,7 +332,7 @@ public class RequisicoesAdm extends JFrame{
     }
 
     private void initComponents() {
-        String[] header = { "ID", "ID Requerente", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar" };
+        String[] header = {"ID", "ID Requerente", "Nome", "Modelo", "Descrição", "Classificação", "Lote", "Cor", "Saldo", "Requerente", "Aprovar", "Reprovar" };
 
         menuPanel.setOpaque(false);
         topbarPanel.setOpaque(false);
