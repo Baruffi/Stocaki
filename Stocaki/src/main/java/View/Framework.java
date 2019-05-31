@@ -44,7 +44,7 @@ public class Framework {
     private static JPanel currentPanel;
     private static Funcionario currentUser;
 
-    public static Requisicoes requisicoes_controller;
+    public static Requisicoes requisicoes_controller = new Requisicoes();
 
     static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
         final JFrame callerFrame = getCurrentFrame();
@@ -136,6 +136,10 @@ public class Framework {
                 break;
             case MOVIMENTACOES_ADM:
                 new MovimentacoesAdm();
+                self.dispose();
+                break;
+            case MOVIMENTACAO_OPR:
+                new MovimentacaoOpr();
                 self.dispose();
                 break;
             default:
