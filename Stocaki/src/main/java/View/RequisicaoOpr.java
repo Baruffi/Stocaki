@@ -64,6 +64,7 @@ public class RequisicaoOpr extends JFrame {
         stocakiLabel.setIcon(icon);
 
         Framework.addToMenu(mlistPanel,this, Framework.VIEW.PRODUTOS_OPR);
+        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACAO_OPR);
         //Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR); DISABLED!!!
 
         Framework.addToForm(nomeField, nomeSeparator, nomeLabel, Framework.INPUT.ALFANUMERICO);

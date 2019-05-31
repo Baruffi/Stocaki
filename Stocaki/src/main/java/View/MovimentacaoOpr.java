@@ -63,8 +63,8 @@ public class MovimentacaoOpr extends JFrame{
         ImageIcon icon = new ImageIcon(Framework.ICONE_CAIXA);
         stocakiLabel.setIcon(icon);
 
-        Framework.addToMenu(mlistPanel,this, Framework.VIEW.PRODUTOS_OPR);
-        //Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR); DISABLED!!!
+        Framework.addToMenu(mlistPanel,this, Framework.VIEW.MOVIMENTACAO_OPR);
+        Framework.addToMenu(rlistPanel,this, Framework.VIEW.REQUISICAO_OPR);
 
         Framework.addToForm(nomeField, nomeSeparator, nomeLabel, Framework.INPUT.ALFANUMERICO);
         Framework.addToForm(modeloField, modeloSeparator, modeloLabel, Framework.INPUT.ALFANUMERICO);

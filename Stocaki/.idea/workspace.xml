@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c16a86b-afa7-4a79-8404-236e67c41eac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Framework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Framework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,44 +19,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuOpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="141" column="37" selection-start-line="141" selection-start-column="37" selection-end-line="141" selection-end-column="37" />
+            <state relative-caret-position="591">
+              <caret line="191" column="21" lean-forward="true" selection-start-line="191" selection-start-column="21" selection-end-line="191" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6167#6512#0" expanded="true" />
+                <element signature="e#6511#6512#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="58" column="4" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="476">
+              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="66" column="70" lean-forward="true" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -135,12 +131,12 @@
         <option value="$PROJECT_DIR$/src/main/java/Controller/teste.form" />
         <option value="$PROJECT_DIR$/src/main/java/View/Movimentacoes.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" />
-        <option value="$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MenuOpr.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Framework.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" />
+        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java" />
       </list>
     </option>
   </component>
@@ -468,7 +464,7 @@
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23265742" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23265742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -477,7 +473,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49840087" weight="0.3286026" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7107791" weight="0.26746726" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7107791" visible="true" weight="0.26746726" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -762,9 +758,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Requisicoes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -782,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -796,13 +782,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>
@@ -823,12 +802,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="66" column="70" lean-forward="true" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="141" column="37" selection-start-line="141" selection-start-column="37" selection-end-line="141" selection-end-column="37" />
+        <state relative-caret-position="591">
+          <caret line="191" column="21" lean-forward="true" selection-start-line="191" selection-start-column="21" selection-end-line="191" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6167#6512#0" expanded="true" />
+            <element signature="e#6511#6512#0" expanded="true" />
           </folding>
         </state>
       </provider>
