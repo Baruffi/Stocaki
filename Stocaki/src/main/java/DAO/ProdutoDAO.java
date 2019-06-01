@@ -10,6 +10,7 @@ import java.util.*;
 
 public class ProdutoDAO {
     private static final String CREATE = "INSERT INTO PRODUTO (NOME, MODELO, DESCRICAO, CLASSIFICACAO, LOTE, COR, SALDO, ID_ARMAZEM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT = "SELECT * FROM PRODUTO";
 
     private Connection con;
     private PreparedStatement ps;
@@ -41,4 +42,44 @@ public class ProdutoDAO {
             DataConnection.closeConnection(con, ps);
         }
     }
+
+    public List<Produto> readProdutos() {
+        List<Produto> produto = new ArrayList<Produto>();
+
+        try {
+            con = DataConnection.getConnection();
+            ps = con.prepareStatement(SELECT);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Produto produtos = new Produto();
+                produtos.setId_produto(rs.getInt("ID_PRODUTO"));
+                produtos.setNome(rs.getString("NOME"));
+                produtos.setModelo(rs.getString("MODELO"));
+                produtos.setDescricao(rs.getString("DESCRICAO"));
+                produtos.setClassificacao(rs.getString("CLASSIFICACAO"));
+                produtos.setLote(rs.getString("LOTE"));
+                produtos.setCor(rs.getString("COR"));
+                produtos.setSaldo(rs.getInt("SALDO"));
+                produtos.setId_armazem(rs.getInt("ID_ARMAZEM"));
+                produto.add(produtos);
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            DataConnection.closeConnection(con, ps, rs);
+        }
+        /*
+        for (Movimentacao movimentacao2 : movimentacao){
+            movimentacao2.setId_produto(MovimentacaoDAO.);
+        }
+
+        for (Requisicao requisicao2 : requisicoes) {
+            requisicao2.setNome_funcionario(FuncionarioDAO.getNome(requisicao2.getId_funcionario()));
+        }*/
+        return produto;
+    }
+
+
+
 }
