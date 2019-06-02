@@ -34,8 +34,10 @@ public class Framework {
                         ICONE_APROVAR_VERDE = "imgs/green-checkmark.png",
                         ICONE_DELETAR = "imgs/icons8-delete-26.png",
                         ICONE_DELETAR_VERMELHO = "imgs/red-delete.png",
-                        ICONE_SOMAR = "imgs/mais.png",
-                        ICONE_SUBTRAIR = "imgs/menos.png",
+                        ICONE_SOMAR_CINZA = "imgs/icons8-mais-grey24.png",
+                        ICONE_SOMAR_PRETO = "imgs/icons8-mais-black26.png",
+                        ICONE_SUBTRAIR_CINZA = "imgs/icons8-sinal-de-menos-grey24 (2).png",
+                        ICONE_SUBTRAIR_PRETO = "imgs/icons8-sinal-de-menos-black24.png",
                         PLANO_DE_FUNDO = "imgs/menuBackground.jpg";
 
     static final Dimension WINDOW_SIZE = new Dimension(1370, 795);

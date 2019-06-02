@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9c16a86b-afa7-4a79-8404-236e67c41eac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ProdutoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ProdutoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/mais.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/menos.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Framework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Framework.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,44 +25,55 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3180">
-              <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state relative-caret-position="-2979">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="52" column="56" lean-forward="true" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4781#4782#0" expanded="true" />
-                <element signature="e#4835#4836#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="105" column="42" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3305#4699#0" expanded="true" />
-                <element signature="e#4698#4699#0" expanded="true" />
-                <element signature="e#6272#6906#0" expanded="true" />
-                <element signature="e#6905#6906#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="230" selection-start-line="230" selection-end-line="257" selection-end-column="11" />
+            <state relative-caret-position="-45">
+              <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1558#1559#0" expanded="true" />
                 <element signature="e#1621#1622#0" expanded="true" />
                 <element signature="e#1731#1732#0" expanded="true" />
                 <element signature="e#1767#1768#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2027#2028#0" expanded="true" />
+                <element signature="e#2090#2091#0" expanded="true" />
+                <element signature="e#2200#2201#0" expanded="true" />
+                <element signature="e#2236#2237#0" expanded="true" />
+                <element signature="e#9190#10620#0" expanded="true" />
+                <element signature="e#10619#10620#0" expanded="true" />
+                <element signature="e#10673#12103#0" expanded="true" />
+                <element signature="e#12102#12103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,6 +102,8 @@
       <find>dm.setValueAt</find>
       <find>coloredIcon</find>
       <find>getColumnClass</find>
+      <find>render</find>
+      <find>rend</find>
     </findStrings>
     <replaceStrings>
       <replace>panel</replace>
@@ -136,19 +149,19 @@
         <option value="$PROJECT_DIR$/src/main/java/Controller/Movimentacoes.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/DataConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Movimentacoes.form" />
-        <option value="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/Requisicoes.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/MovimentacaoDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/teste.form" />
         <option value="$PROJECT_DIR$/src/main/java/View/Movimentacoes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MenuOpr.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/ProdutoDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form" />
+        <option value="$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/Framework.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/Login.java" />
       </list>
     </option>
   </component>
@@ -172,7 +185,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,15 +240,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="MenuOpr" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Stocaki" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stocaki" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
               <item name="MovimentacoesAdm" type="e9f4de52:FormNode" />
             </path>
             <path>
@@ -251,7 +255,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,14 +264,14 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Raphael\IdeaProjects\Connection\src\main\java\View" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/imgs" />
       <recent name="C:\Users\Raphael\Documents\GitHub\Stocaki\Connection\src\main\java\View" />
       <recent name="C:\Users\Raphael\IdeaProjects\Connection" />
       <recent name="C:\Users\Raphael\IdeaProjects\Connection\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Raphael\IdeaProjects\Connection\src\main\java\View" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -457,7 +461,7 @@
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1664888" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16808964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -475,6 +479,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.28975454" side_tool="true" weight="0.26746726" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.3991462" weight="0.3286026" />
+      <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -485,7 +490,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1664888" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16808964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -503,6 +508,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.28975454" side_tool="true" weight="0.26746726" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.3991462" weight="0.3286026" />
+      <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -590,16 +596,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuAdm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Login.form">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="ui-designer" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/DataConnection.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -705,13 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuOpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/RequisicaoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -758,16 +757,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168">
-          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicaoOpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -775,67 +764,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/menos.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/loginImage.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/green-checkmark.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/mais.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="jar:///usr/lib/jvm/java-12-oracle/lib/src.zip!/java.desktop/javax/swing/ImageIcon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
+        <state relative-caret-position="-955">
           <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/Login.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacoesAdm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="285">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="54" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1049#2191#0" expanded="true" />
-            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#1556#1557#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/icons8-delete-26.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/icons8-mais-e-menos-26.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/icons8-sinal-de-menos-24 (1).png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MenuOpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/Framework.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3180">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4781#4782#0" expanded="true" />
-            <element signature="e#4835#4836#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2979">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="230" selection-start-line="230" selection-end-line="257" selection-end-column="11" />
+        <state relative-caret-position="326">
+          <caret line="52" column="56" lean-forward="true" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1621#1622#0" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-            <element signature="e#1767#1768#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/MovimentacaoOpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="105" column="42" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
+        <state relative-caret-position="420">
+          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3305#4699#0" expanded="true" />
-            <element signature="e#4698#4699#0" expanded="true" />
-            <element signature="e#6272#6906#0" expanded="true" />
-            <element signature="e#6905#6906#0" expanded="true" />
+            <element signature="e#2027#2028#0" expanded="true" />
+            <element signature="e#2090#2091#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#2236#2237#0" expanded="true" />
+            <element signature="e#9190#10620#0" expanded="true" />
+            <element signature="e#10619#10620#0" expanded="true" />
+            <element signature="e#10673#12103#0" expanded="true" />
+            <element signature="e#12102#12103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/RequisicoesAdm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
+            <element signature="e#1621#1622#0" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
           </folding>
         </state>
       </provider>

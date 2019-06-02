@@ -43,18 +43,18 @@ public class Login extends JFrame {
 
                 final Funcionario funcionario = new Funcionario();
 
-//                funcionario.setId_funcionario(1);
-//                funcionario.setNome("teste");
-//                funcionario.setCpf(1);
-//                funcionario.setCargo("teste");
-//                funcionario.setCep(1);
-//                funcionario.setNivel_acesso('A');
-//                funcionario.setTelefone(1);
-//                funcionario.setEmail("teste@teste.com");
-//
-//                Framework.setCurrentUser(funcionario);
-//
-//                new MenuAdm();
+                funcionario.setId_funcionario(1);
+                funcionario.setNome("teste");
+                funcionario.setCpf(1);
+                funcionario.setCargo("teste");
+                funcionario.setCep(1);
+                funcionario.setNivel_acesso('A');
+                funcionario.setTelefone(1);
+                funcionario.setEmail("teste@teste.com");
+
+                Framework.setCurrentUser(funcionario);
+
+                new MenuAdm();
 
                 funcionario.setId_funcionario(2);
                 funcionario.setNome("teste");
