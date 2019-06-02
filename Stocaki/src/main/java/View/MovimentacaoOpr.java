@@ -74,7 +74,7 @@ public class MovimentacaoOpr extends JFrame{
             return false;
         }
     };
-    
+
     private List<Produto> produtos = null;
     private ProdutoDAO produtoDAO = new ProdutoDAO();
     private ArmazemDAO armazemDAO = new ArmazemDAO();
@@ -93,88 +93,112 @@ public class MovimentacaoOpr extends JFrame{
     private ImageIcon sum_icon_grey = new ImageIcon(Framework.ICONE_SOMAR_CINZA);
     private ImageIcon sub_icon_grey = new ImageIcon(Framework.ICONE_SUBTRAIR_CINZA);
 
-    private static final int APPROVE = 8,
-                             REPROVE = 9;
+    private static final int SOMAR = 6,
+                             SUBTRAIR = 7;
 
 
     MovimentacaoOpr() {
         initComponents();
         Framework.setup(this, menuPanel);
 
-        //Implementar barra de pesquisa de material
-        //Implmentar botoes
-        //Implementar logica de soma e subtração
+        movimentacoesTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int answer;
 
-//        movimentacoesTable.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                super.mouseClicked(e);
-//                int answer;
-//
-//                switch (movimentacoesTable.columnAtPoint(e.getPoint())) {
-//                    case APPROVE:
-//                        answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja APROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
-//                        if (answer == JOptionPane.YES_OPTION) {
-//                            Movimentacao movimentacao = new Movimentacao();
-//                            Object[] selection_values;
-//
-//                            try {
-//                                selection_values = armazemDAO.readIdArmazens().toArray();
-//
-//                                answer = Integer.parseInt(JOptionPane.showInputDialog(movimentacoesTable, "Insira o ID do armazem no qual o produto deve ser cadastrado", "Escolha do Armazem", JOptionPane.INFORMATION_MESSAGE, stocaki_icon,selection_values,selection_values[0]).toString());
-//
-//                                movimentacao.setSaldo(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),8).toString()));
-//                                //requisicao.setId_armazem(answer);
-////                                requisicao.setStatus_aprovacao("A");
-//
-////                                requisicao.setId_requisicao(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
-////                                requisicao.setId_funcionario(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),1).toString()));
-////                                requisicao.setNome(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),2).toString());
-////                                requisicao.setModelo(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),3).toString());
-////                                requisicao.setDescricao(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),4).toString());
-////                                requisicao.setClassificacao(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),5).toString());
-////                                requisicao.setLote(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),6).toString());
-////                                requisicao.setCor(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),7).toString());
-////                                requisicao.setSaldo(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),8).toString()));
-//
-//                                try{
-//                                    requisicaoDAO.approveRequisicao(requisicao);
-//                                    dm.removeRow(movimentacoesTable.rowAtPoint(e.getPoint()));
-//                                } catch (Exception ex) {
-//                                    JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
-//                                }
-//                            } catch (Exception ex) {
-//                                JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
-//                            }
-//                        }
-//                        break;
-//                    case REPROVE:
-//                        answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja REPROVAR a requisição?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
-//                        if (answer == JOptionPane.YES_OPTION) {
-//                            Requisicao requisicao = new Requisicao();
-//
-//                            requisicao.setStatus_aprovacao("R");
-//
-//                            requisicao.setId_requisicao(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
-//
-//                            try{
-//                                requisicaoDAO.approveRequisicao(requisicao);
-//                                dm.removeRow(movimentacoesTable.rowAtPoint(e.getPoint()));
-//                            } catch (Exception ex) {
-//                                JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
-//                            }
-//                        }
-//                        break;
-//                    default:
-//                        break;
-//                }
-//
-//
-//
-//
-//
-//            }
-//        });
+                switch (movimentacoesTable.columnAtPoint(e.getPoint())) {
+                    case SOMAR:
+                        answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja RECEBER este material?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+                        if (answer == JOptionPane.YES_OPTION) {
+                            Movimentacao movimentacao = new Movimentacao();
+                            Produto produto = new Produto();
+
+                            try {
+
+                                int sum = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) + 1;
+
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString());
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),1).toString());
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),2).toString());
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),3).toString());
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),4).toString());
+                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),5).toString());
+
+                                movimentacao.setMovimentacaoType("E");
+                                movimentacao.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                movimentacao.setSaldo(sum);
+                                movimentacao.setId_funcionario(Framework.getCurrentUser().getId_funcionario());
+
+                                produto.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                produto.setSaldo(sum);
+
+                                try{
+                                    MovimentacaoDAO.regristateMovimentacao(movimentacao);
+                                    produtoDAO.updateSaldo(produto);
+                                    new MovimentacaoOpr();
+                                    dispose();
+
+
+                                } catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                                    System.out.println(ex);
+                                }
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case SUBTRAIR:
+
+                        if (Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) > 0)  {
+                            answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja RETIRAR este material?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+                            if (answer == JOptionPane.YES_OPTION) {
+                                Movimentacao movimentacao = new Movimentacao();
+                                Produto produto = new Produto();
+
+                                int sub = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) - 1;
+                                try{
+                                    movimentacao.setMovimentacaoType("S");
+                                    movimentacao.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                    movimentacao.setSaldo(sub);
+                                    movimentacao.setId_funcionario(Framework.getCurrentUser().getId_funcionario());
+
+                                    produto.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
+                                    produto.setSaldo(sub);
+
+                                    try{
+                                        MovimentacaoDAO.regristateMovimentacao(movimentacao);
+                                        produtoDAO.updateSaldo(produto);
+                                        new MovimentacaoOpr();
+                                        dispose();
+
+                                    } catch (Exception ex) {
+                                        JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                                        System.out.println(ex);
+                                    }
+
+
+                                }catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(movimentacoesTable, "Erro inesperado!", "ERRO", JOptionPane.ERROR_MESSAGE, new ImageIcon(Framework.ICONE_CAIXA));
+                                    System.out.println(ex);
+                                }
+                            }
+
+                        }
+                        else{
+                            JOptionPane.showConfirmDialog(movimentacoesTable, "Saldo insuficiente!\n Movimentação não realizada.", "Aviso Stocaki", JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        });
 
         movimentacoesTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -185,8 +209,8 @@ public class MovimentacaoOpr extends JFrame{
 
                 if (coloredIcon != -1) {
                     try {
-                        movimentacoesTable.setValueAt(sum_icon_black, coloredIcon, APPROVE);
-                        movimentacoesTable.setValueAt(sub_icon_black, coloredIcon, REPROVE);
+                        movimentacoesTable.setValueAt(sum_icon_grey, coloredIcon, SOMAR);
+                        movimentacoesTable.setValueAt(sub_icon_grey, coloredIcon, SUBTRAIR);
                     } catch (Exception ex) {
                         //pass
                     }
@@ -201,21 +225,21 @@ public class MovimentacaoOpr extends JFrame{
 
                 if (coloredIcon != -1) {
                     try {
-                        movimentacoesTable.setValueAt(sum_icon_black, coloredIcon, APPROVE);
-                        movimentacoesTable.setValueAt(sub_icon_black, coloredIcon, REPROVE);
+                        movimentacoesTable.setValueAt(sum_icon_black, coloredIcon, SOMAR);
+                        movimentacoesTable.setValueAt(sub_icon_black, coloredIcon, SUBTRAIR);
                     } catch (Exception ex) {
                         //pass
                     }
                     coloredIcon = -1;
                 }
 
-                if (movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE) {
+                if (movimentacoesTable.columnAtPoint(e.getPoint()) == SOMAR) {
                     movimentacoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    movimentacoesTable.setValueAt(sum_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), APPROVE);
+                    movimentacoesTable.setValueAt(sum_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), SOMAR);
                     coloredIcon = movimentacoesTable.rowAtPoint(e.getPoint());
-                } else if (movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE) {
+                } else if (movimentacoesTable.columnAtPoint(e.getPoint()) == SUBTRAIR) {
                     movimentacoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    movimentacoesTable.setValueAt(sub_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), REPROVE);
+                    movimentacoesTable.setValueAt(sub_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), SUBTRAIR);
                     coloredIcon = movimentacoesTable.rowAtPoint(e.getPoint());
                 } else {
                     movimentacoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -229,21 +253,21 @@ public class MovimentacaoOpr extends JFrame{
 
                 if (coloredIcon != -1) {
                     try {
-                        movimentacoesTable.setValueAt(sum_icon_black, coloredIcon, APPROVE);
-                        movimentacoesTable.setValueAt(sub_icon_black, coloredIcon, REPROVE);
+                        movimentacoesTable.setValueAt(sum_icon_grey, coloredIcon, SOMAR);
+                        movimentacoesTable.setValueAt(sub_icon_grey, coloredIcon, SUBTRAIR);
                     } catch (Exception ex) {
                         //pass
                     }
                     coloredIcon = -1;
                 }
 
-                if (movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE) {
+                if (movimentacoesTable.columnAtPoint(e.getPoint()) == SOMAR) {
                     movimentacoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    movimentacoesTable.setValueAt(sum_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), APPROVE);
+                    movimentacoesTable.setValueAt(sum_icon_grey, movimentacoesTable.rowAtPoint(e.getPoint()), SOMAR);
                     coloredIcon = movimentacoesTable.rowAtPoint(e.getPoint());
-                } else if (movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE) {
+                } else if (movimentacoesTable.columnAtPoint(e.getPoint()) == SUBTRAIR) {
                     movimentacoesTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    movimentacoesTable.setValueAt(sub_icon_black, movimentacoesTable.rowAtPoint(e.getPoint()), REPROVE);
+                    movimentacoesTable.setValueAt(sub_icon_grey, movimentacoesTable.rowAtPoint(e.getPoint()), SUBTRAIR);
                     coloredIcon = movimentacoesTable.rowAtPoint(e.getPoint());
                 } else {
                     movimentacoesTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -258,7 +282,7 @@ public class MovimentacaoOpr extends JFrame{
 
                 String[] header = {"ID", "Nome", "Modelo", "Lote", "Saldo", "Armazém", "Receber", "Retirar" };
 
-                if(!(movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE || movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE)) {
+                if(!(movimentacoesTable.columnAtPoint(e.getPoint()) == SOMAR || movimentacoesTable.columnAtPoint(e.getPoint()) == SUBTRAIR)) {
                     if (movimentacoesTable.getColumnName(movimentacoesTable.columnAtPoint(e.getPoint())).contains("▼ ")) {
                         for (int i = 0; i < dm.getRowCount(); i++) {
                             for (int j = 0; j < i; j++) {
@@ -282,7 +306,7 @@ public class MovimentacaoOpr extends JFrame{
                     }
                     dm.setColumnIdentifiers(header);
 
-                    // movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
+                    //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID"));
                     //movimentacoesTable.getColumnModel().removeColumn(movimentacoesTable.getColumn("ID Requerente"));
                 }
             }
@@ -292,7 +316,7 @@ public class MovimentacaoOpr extends JFrame{
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
 
-                if (movimentacoesTable.columnAtPoint(e.getPoint()) == APPROVE || movimentacoesTable.columnAtPoint(e.getPoint()) == REPROVE) {
+                if (movimentacoesTable.columnAtPoint(e.getPoint()) == SOMAR || movimentacoesTable.columnAtPoint(e.getPoint()) == SUBTRAIR) {
                     movimentacoesTable.getTableHeader().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 } else {
                     movimentacoesTable.getTableHeader().setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -341,7 +365,8 @@ public class MovimentacaoOpr extends JFrame{
         if (produtos != null) {
             for (Produto produto:
                     produtos) {
-                dm.addRow(new Object[]{produto.getId_produto(), produto.getNome(), produto.getModelo(), /*produto.getDescricao(), produto.getClassificacao(),*/ produto.getLote(), /*produto.getCor(),*/ produto.getSaldo(), produto.getId_armazem(), sum_icon_black, sub_icon_black});
+                dm.addRow(new Object[]{produto.getId_produto(), produto.getNome(), produto.getModelo(), /*produto.getDescricao(), produto.getClassificacao(),*/
+                        produto.getLote(), /*produto.getCor(),*/ produto.getSaldo(), produto.getId_armazem(), sum_icon_black, sub_icon_black});
             }
         }
 

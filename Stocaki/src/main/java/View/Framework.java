@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Movimentacoes;
 import Controller.Requisicoes;
 import Model.Funcionario;
 import org.jetbrains.annotations.Contract;
@@ -49,6 +50,8 @@ public class Framework {
     private static Funcionario currentUser;
 
     public static Requisicoes requisicoes_controller = new Requisicoes();
+    public static Movimentacoes movimentacoes_controller = new Movimentacoes();
+
 
     static void setup(@NotNull final JFrame frame, @NotNull final JPanel panel) {
         final JFrame callerFrame = getCurrentFrame();
@@ -285,6 +288,9 @@ public class Framework {
         switch (controller) {
             case REQUISICOES:
                 requisicoes_controller.fazerRequisicao(button, textFields);
+                break;
+            case MOVIMENTACOES:
+                movimentacoes_controller.somar(button, textFields);
                 break;
             default:
                 System.out.println("Controller Inválido!");

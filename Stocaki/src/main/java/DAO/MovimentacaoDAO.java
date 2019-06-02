@@ -1,8 +1,10 @@
 package DAO;
 
+import DAO.ProdutoDAO;
+
 import Model.Movimentacao;
 import Model.Produto;
-import Model.Requisicao;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,13 +12,16 @@ import java.sql.*;
 import java.util.*;
 
 public class MovimentacaoDAO {
-    private ProdutoDAO produtoDAO = new ProdutoDAO();
+    ProdutoDAO produtoDAO = new ProdutoDAO();
 
     private static final DataConnection dataConnection = new DataConnection();
-    private static final String CREATE = "INSERT INTO MOVIMENTACAO (ID_MOVIMENTACAO, DATAEHORA, MOVIMENTACAOTYPE, SALDO, ID_PRODUTO, ID_FUNCIONARIO) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String CREATE = "INSERT INTO MOVIMENTACAO (DATAEHORA, MOVIMENTACAOTYPE, SALDO, ID_PRODUTO, ID_FUNCIONARIO) VALUES (now(), ?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE SALDO >=0";
     //private static final String SELECT = "SELECT * FROM MOVIMENTACAO WHERE ID_PRDUTO = ?";
     private static final String UPDATE = "UPDATE MOVIMENTACAO SET SALDO = ? WHERE ID_PRODUTO = ?";
+    private static final String SETDATA = "UPDATE MOVIMENTACAO SET SALDO = ? WHERE ID_PRODUTO = ?";
+
+
 
     private Connection con;
     private PreparedStatement ps;
@@ -62,69 +67,25 @@ public class MovimentacaoDAO {
         }*/
         return movimentacao;
     }
-    /*public void createRequisicao(@NotNull Requisicao requisicao) {
-        try {
-            con = DataConnection.getConnection();
-            ps = con.prepareStatement(CREATE);
 
-            ps.setString(1, requisicao.getNome());
-            ps.setString(2, requisicao.getModelo());
-            ps.setString(3, requisicao.getDescricao());
-            ps.setString(4, requisicao.getClassificacao());
-            ps.setString(5, requisicao.getLote());
-            ps.setString(6, requisicao.getCor());
-            ps.setInt(7, requisicao.getId_funcionario());
-            ps.setInt(8, requisicao.getSaldo());
-
-            ps.execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            DataConnection.closeConnection(con, ps);
-        }
-    }*/
-    /*public void approveRequisicao(@NotNull Requisicao requisicao) {
-        try {
-            con = DataConnection.getConnection();
-            ps = con.prepareStatement(APPROVE);
-
-            ps.setInt(2, requisicao.getId_requisicao());
-            ps.setString(1, requisicao.getStatus_aprovacao());
-
-            ps.execute();
-
-            if (requisicao.getStatus_aprovacao().equals("A")) {
-                Produto produto = new Produto();
-                produto.setNome(requisicao.getNome());
-                produto.setModelo(requisicao.getModelo());
-                produto.setDescricao(requisicao.getDescricao());
-                produto.setClassificacao(requisicao.getClassificacao());
-                produto.setLote(requisicao.getLote());
-                produto.setCor(requisicao.getCor());
-                produto.setSaldo(requisicao.getSaldo());
-                produto.setId_armazem(requisicao.getId_armazem());
-                produtoDAO.createProduto(produto);
-            }
-        } catch(SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            DataConnection.closeConnection(con, ps);
-        }
-    }*/
-    public static void doMovimentacao(@NotNull Movimentacao movimentacao) {
+    public static void regristateMovimentacao(@NotNull Movimentacao movimentacao) {
         Connection con = null;
         PreparedStatement ps = null;
+        ProdutoDAO produtoDAO1 = new ProdutoDAO();
 
         try {
+            Produto produto = new Produto();
             con = DataConnection.getConnection();
             ps = con.prepareStatement(CREATE);
 
-            ps.setDate(1, movimentacao.getDataEHora());
-            ps.setString(2, movimentacao.getMovimentacaoType());
-            ps.setInt(3, movimentacao.getSaldo());
-            ps.setInt(4, movimentacao.getId_produto());
-            ps.setInt(5, movimentacao.getId_funcionario());
+            //ps.setDate(1, movimentacao.getDataEHora());
+            ps.setString(1, movimentacao.getMovimentacaoType());
+            ps.setInt(2, movimentacao.getSaldo());
+            ps.setInt(3, movimentacao.getId_produto());
+            ps.setInt(4, movimentacao.getId_funcionario());
 
+            //não está atualizando o saldo do produto.
+            //produtoDAO1.updateSaldo(produto);
             ps.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

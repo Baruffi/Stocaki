@@ -11,6 +11,7 @@ import java.util.*;
 public class ProdutoDAO {
     private static final String CREATE = "INSERT INTO PRODUTO (NOME, MODELO, DESCRICAO, CLASSIFICACAO, LOTE, COR, SALDO, ID_ARMAZEM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM PRODUTO";
+    private static final String UPDATE_SALDO = "UPDATE PRODUTO set SALDO = ? WHERE ID_PRODUTO = ?";
 
     private Connection con;
     private PreparedStatement ps;
@@ -35,6 +36,21 @@ public class ProdutoDAO {
             ps.setString(6, produto.getCor());
             ps.setInt(7, produto.getSaldo());
             ps.setInt(8, produto.getId_armazem());
+            ps.execute();
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        } finally {
+            DataConnection.closeConnection(con, ps);
+        }
+    }
+
+    public void updateSaldo(@NotNull Produto produto) {
+        try {
+            con = DataConnection.getConnection();
+            ps = con.prepareStatement(UPDATE_SALDO);
+            ps.setInt(1, produto.getSaldo());
+            ps.setInt(2, produto.getId_produto());
+
             ps.execute();
         } catch (SQLException ex){
             ex.printStackTrace();
