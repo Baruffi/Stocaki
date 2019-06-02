@@ -118,13 +118,6 @@ public class MovimentacaoOpr extends JFrame{
 
                                 int sum = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) + 1;
 
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString());
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),1).toString());
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),2).toString());
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),3).toString());
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),4).toString());
-                                System.out.println(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),5).toString());
-
                                 movimentacao.setMovimentacaoType("E");
                                 movimentacao.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
                                 movimentacao.setSaldo(sum);

@@ -57,14 +57,7 @@ public class MovimentacaoDAO {
         } finally {
             DataConnection.closeConnection(con, ps, rs);
         }
-        /*
-        for (Movimentacao movimentacao2 : movimentacao){
-            movimentacao2.setId_produto(MovimentacaoDAO.);
-        }
 
-        for (Requisicao requisicao2 : requisicoes) {
-            requisicao2.setNome_funcionario(FuncionarioDAO.getNome(requisicao2.getId_funcionario()));
-        }*/
         return movimentacao;
     }
 
