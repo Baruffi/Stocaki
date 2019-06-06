@@ -12,11 +12,13 @@ public class Movimentacao {
     private int saldo;
     private int id_produto;
     private int id_funcionario;
+    private String nome;
 
     @Contract(pure = true)
     public Movimentacao(){
 
     }
+
 
     public int getId_movimentacao(){
         return id_movimentacao;

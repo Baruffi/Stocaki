@@ -5,6 +5,7 @@ import DAO.ProdutoDAO;
 import Model.Movimentacao;
 import Model.Produto;
 
+import Model.Requisicao;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -57,7 +58,6 @@ public class MovimentacaoDAO {
         } finally {
             DataConnection.closeConnection(con, ps, rs);
         }
-
         return movimentacao;
     }
 

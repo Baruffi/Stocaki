@@ -115,8 +115,8 @@ public class MovimentacaoOpr extends JFrame{
                             Produto produto = new Produto();
 
                             try {
-
-                                int sum = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) + 1;
+                                int values = Integer.parseInt(JOptionPane.showInputDialog(movimentacoesTable, "Informe a quantidade"));
+                                int sum = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) + values;
 
                                 movimentacao.setMovimentacaoType("E");
                                 movimentacao.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
@@ -144,14 +144,14 @@ public class MovimentacaoOpr extends JFrame{
                         }
                         break;
                     case SUBTRAIR:
-
+                        int values = Integer.parseInt(JOptionPane.showInternalInputDialog(movimentacoesTable, "Informe a quantidade"));
                         if (Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) > 0)  {
-                            answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja RETIRAR este material?", "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
+                            answer = JOptionPane.showConfirmDialog(movimentacoesTable, "Tem certeza que deseja RETIRAR este material? \n Quantidade: " + values, "Aviso Stocaki", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
                             if (answer == JOptionPane.YES_OPTION) {
                                 Movimentacao movimentacao = new Movimentacao();
                                 Produto produto = new Produto();
 
-                                int sub = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) - 1;
+                                int sub = Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()), 4).toString()) - values;
                                 try{
                                     movimentacao.setMovimentacaoType("S");
                                     movimentacao.setId_produto(Integer.parseInt(dm.getValueAt(movimentacoesTable.rowAtPoint(e.getPoint()),0).toString()));
@@ -182,7 +182,8 @@ public class MovimentacaoOpr extends JFrame{
                         }
                         else{
                             JOptionPane.showConfirmDialog(movimentacoesTable, "Saldo insuficiente!\n Movimentação não realizada.", "Aviso Stocaki", JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE, stocaki_icon);
-
+                            new MovimentacaoOpr();
+                            dispose();
                         }
 
                         break;
